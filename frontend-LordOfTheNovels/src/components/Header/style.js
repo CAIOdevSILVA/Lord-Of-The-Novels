@@ -1,17 +1,14 @@
 import styled from "styled-components"
 
-export const Container = styled.div `
+export const Container = styled.header `
   width: 100%;
   height: 72px;
   padding: 5px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #d9d9d9;
-
-  .switch{
-    position: relative;
-  }
+  background: ${({theme}) => theme.colors.background};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.secundary};
 `
 export const Image = styled.div`
   width: 137px;
@@ -34,7 +31,7 @@ export const List = styled.ul`
 
   .StyledLink{
     text-decoration: none;
-    color: #6a6a6b;
+    color: ${({ theme }) => theme.colors.headerColor};
     li{
       display: flex;
       gap: 2px;
@@ -42,16 +39,16 @@ export const List = styled.ul`
       transition: color .3s;
     }
     svg{
-      color: #6a6a6b;
+      color: ${({ theme }) => theme.colors.iconColors};
       font-size: 25px;
       transition: color .3s;
     }
     &:hover{
       li{
-        color: #000000;
+        color:${({ theme }) => theme.colors.headerColorHover};
       }
       svg {
-        color: #3e1e68;
+        color: ${({ theme }) => theme.colors.primary};
       }
     }
   }
@@ -61,7 +58,7 @@ export const Search = styled.div`
   width: 373px;
   height: 48px;
   border-radius: 100px;
-  border: 1px solid #3e1e68;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: center;
   padding: 0 20px;
@@ -71,17 +68,19 @@ export const Search = styled.div`
     outline: none;
     border: none;
     background: transparent;
-    caret-color: #3e1e68;
+    caret-color: ${({ theme }) => theme.colors.primary};
+    width: 100%;
+    height: 100%;
 
     &::placeholder{
       font-size: 18px;
-      color: #d9d9d9;
+      color: ${({ theme }) => theme.colors.placeholder};
     }
   }
 
   svg{
     font-size: 20px;
-    color: #d9d9d9;
+    color:${({ theme }) => theme.colors.placeholder};
   }
 
 `
