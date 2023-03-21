@@ -72,6 +72,10 @@ export const ListSocial = styled.ul`
     li{
       font-size: 30px;
       color: ${({theme}) => theme.colors.buttonText};
+
+      &:hover{
+        color: #222222;
+      }
     }
   }
 `
