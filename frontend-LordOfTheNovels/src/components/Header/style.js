@@ -85,3 +85,52 @@ export const Search = styled.div`
 
 `
 
+export const UserProfile = styled.div`
+  width: 50px;
+  height: 50px;
+  background: #d9d9d9;
+  position: relative;
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover{
+    ul{
+      display: block;
+    }
+  }
+`
+
+export const ListProfile = styled.ul`
+  display: none;
+  position: absolute; 
+  border-radius: 5px;
+  z-index: 1000;
+  width: 180px;
+  height: 117px;
+  background: ${({theme}) => theme.colors.primary};
+  left: -60px;
+  top: 52px;
+  list-style: none;
+  padding: 12px 20px;
+
+  .ProfileLinks{
+    text-decoration: none;
+    
+
+    li{
+      color: ${({theme}) => theme.colors.buttonText};
+      font-size: 15px;
+      margin-bottom: 8px;
+
+      svg{
+        font-size: 21px;
+      }
+  }
+  }
+
+`
+
