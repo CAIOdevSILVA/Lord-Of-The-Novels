@@ -11,6 +11,7 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   transition: .3s all;
   box-shadow: 7px 5px 15px -1px rgba(0,0,0,0.5);
+  cursor: pointer;
 
   &:hover{
     background:${({ theme }) => theme.colors.buttonHover};
