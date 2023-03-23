@@ -25,7 +25,7 @@ export const InfoSection = styled.section`
 
   p{
     color: ${({theme}) => theme.colors.buttonText};
-    font-size: 15px;
+    font-size: 14px;
   }
 `
 

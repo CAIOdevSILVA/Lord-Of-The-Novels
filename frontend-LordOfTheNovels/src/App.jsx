@@ -2,10 +2,11 @@
 import { ThemeProvider } from "styled-components"
 import { useSelector } from "react-redux"
 
-import Home from "./pages/Home/Index"
-import Novels from "./pages/Novels/index"
-import Header from "./components/Header/index"
-import Footer from "./components/Footer/index"
+import Home from "./pages/Home/Index.jsx"
+import Novels from "./pages/Novels/[slug].jsx"
+import Header from "./components/Header/index.jsx"
+import Footer from "./components/Footer/index.jsx"
+import Chapter from "./pages/Chapter/index"
 
 //Dependencies
 import { Routes, Route } from "react-router-dom"
@@ -23,7 +24,8 @@ function App() {
     <main>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/novels" element={<Novels />}/>
+        <Route path="/novels/:slug" element={<Novels />}/>
+        <Route path="/novels/:slug/:slug" element={<Chapter />}></Route>
       </Routes>
     </main>
     <Footer/>

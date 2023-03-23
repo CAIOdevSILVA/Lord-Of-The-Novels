@@ -1,0 +1,30 @@
+.swiper {
+  padding: 32px;
+}
+
+.swiper-slide{
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet-active{
+  background-color: #828181;
+}
+
+.swiper-button-prev{
+  color: #d9d9d9;
+  transition: .5s;
+}
+
+.swiper-button-prev:hover{
+  color: #a7a7a7;
+}
+
+.swiper-button-next{
+  color: #d9d9d9;
+  transition: .5s;
+}
+
+.swiper-button-next:hover{
+  color: #a7a7a7;
+}
