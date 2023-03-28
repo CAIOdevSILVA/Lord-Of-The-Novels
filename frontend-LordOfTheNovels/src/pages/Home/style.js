@@ -50,6 +50,10 @@ export const Tags = styled.section`
     gap: 2rem;
     margin: 1rem;
   }
+
+  @media(max-width:768px){
+    width: 85%;
+  }
 `
 
 export const Title = styled.section`
@@ -65,6 +69,15 @@ export const Title = styled.section`
     height: 3px;
     background: ${({theme}) => theme.colors.primary};
     position: absolute;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.7rem;
+
+    &::after{
+      width: 280px;
+      height: 2px;
+    }
   }
 `
 export const Tag = styled.span`
@@ -90,5 +103,12 @@ export const Tag = styled.span`
     border: 2px solid ${({theme}) => theme.colors.primary};
     background: #fff;
     color: ${({theme}) => theme.colors.primary};
+  }
+
+
+  @media(max-width:768px){
+    width:180px;
+    height: 30px;
+    font-size: .9rem;
   }
 `

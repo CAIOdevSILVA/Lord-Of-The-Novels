@@ -6,5 +6,10 @@ export const Container = styled.article`
   padding: 1rem 3rem;
   place-content: center;
   gap: 2rem;
+  margin-top: 1rem;
+
+  @media(min-width:768px) and (max-width: 1024px){
+    grid-template-columns: repeat(3, auto);
+  }
 `
 

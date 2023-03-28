@@ -12,6 +12,11 @@ export const Container = styled.div`
   &:hover{
     transform: scale(.96);
   }
+
+  @media(max-width:768px) {
+    width: 164px;
+    height: 308px;
+  }
 `
 
 export const Imagem = styled.div`
@@ -53,6 +58,12 @@ export const Tags = styled.div`
     border-radius: 100px;
     padding: 2px 5px;
   }
+
+  @media(max-width: 768px){
+    span{
+      font-size: .5rem;
+    }
+  }
 `
 
 export const Title = styled.h1`
@@ -64,6 +75,9 @@ export const Title = styled.h1`
   overflow: hidden;
   color: #000;
 
+  @media(max-width: 768px){
+    font-size: .9rem;
+  }
 `
 
 export const NovelInfo = styled.div`
@@ -84,6 +98,10 @@ export const Rating = styled.span`
   svg{
     font-size: 1rem;
     color: #E3DD50;
+  }
+
+  @media(max-width: 768px){
+    font-size: .6rem;
   }
 
 `
@@ -110,6 +128,16 @@ export const NextChapter = styled.span`
 
   &:hover{
     transform: scale(1.1);
+  }
+
+  @media(max-width: 768px){
+    font-size: .5rem;
+
+    span{
+    strong {
+      font-size: .6rem;
+    }
+  }
   }
 
 `

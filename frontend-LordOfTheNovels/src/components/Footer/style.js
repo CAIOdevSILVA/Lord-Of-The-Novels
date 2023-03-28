@@ -8,6 +8,10 @@ export const Container = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media(max-width:768px) {
+    justify-content: space-around;
+  }
 `
 
 export const Section = styled.section`
@@ -15,6 +19,10 @@ export const Section = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px){
+    justify-content: space-around;
+  }
 `
 
 export const InfoSection = styled.section`
@@ -27,6 +35,12 @@ export const InfoSection = styled.section`
     color: ${({theme}) => theme.colors.buttonText};
     font-size: 14px;
   }
+
+  @media(max-width: 768px) {
+    p{
+      font-size: .7rem;
+    }
+  }
 `
 
 export const Social = styled.div`
@@ -37,6 +51,13 @@ export const Social = styled.div`
   img{
     width: 150px;
     height: 90px;
+  }
+
+  @media(max-width:768px) {
+    img{
+      width: 130px;
+      height: 70px;
+    }
   }
 `
 
@@ -60,6 +81,16 @@ export const Recursos = styled.div`
       color: #222222;
     }
   }
+
+  @media (max-width:768px) {
+    h1{
+      font-size: 1.7rem;
+    }
+
+    h3{
+      font-size: .8rem;
+    }
+  }
 `
 
 export const ListSocial = styled.ul`
@@ -75,6 +106,14 @@ export const ListSocial = styled.ul`
 
       &:hover{
         color: #222222;
+      }
+    }
+  }
+
+  @media(max-width:768px) {
+    .socialLink{
+      li{
+        font-size: 1.7rem;
       }
     }
   }
