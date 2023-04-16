@@ -7,4 +7,10 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   font-family: 'Nunito Sans', sans-serif;
  }
+
+ body{
+  background-color: #111;
+  color: #f1f5f4;
+ }
 `
+

@@ -4,13 +4,15 @@ import { Routes, Route } from "react-router-dom"
 
 //Components
 import { Chapter, Novels, HomePage } from "../index"
-import { Header, Footer }  from "../../components/index"
+import { Navbar, Footer }  from "../../components/index"
+
+import * as Styles from './style'
 
 const Home = () => {
 
   return (
-    <div>
-      <Header/>
+    <Styles.Container>
+      <Navbar/>
       <main>
         <Routes>
           <Route path='/' element={<HomePage/>} />
@@ -19,7 +21,7 @@ const Home = () => {
         </Routes>
       </main>
       <Footer/>
-    </div>
+    </Styles.Container>
   )
 }
 
