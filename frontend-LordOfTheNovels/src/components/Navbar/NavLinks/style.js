@@ -11,6 +11,11 @@ export const ListContainer = styled.ul`
   .link {
     text-decoration: none;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
 `;
 
 export const ListItem = styled.li`

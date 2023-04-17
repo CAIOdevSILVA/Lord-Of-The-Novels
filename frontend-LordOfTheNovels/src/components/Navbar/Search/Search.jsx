@@ -1,23 +1,48 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 import { RxMagnifyingGlass }  from "react-icons/rx"
 
 import * as Styles from "./style"
 
-const Search = () => {
+const Search = ({ isMobile }) => {
   const [isActive, setIsActive] = useState(false)
+
   const hanldeSearchAnimation = () => {
     setIsActive( isActive ? false : true)
   }
 
   return (
     <div>
-      <Styles.Search active={isActive} onClick={hanldeSearchAnimation}>
-       <div>
-          <RxMagnifyingGlass />
-       </div>
-       
-      </Styles.Search>
+      {isMobile === false ? (
+        <Styles.Search className={`${isActive ? "active" : ""}`} active={isActive}>
+        <div onClick={hanldeSearchAnimation}>
+           <RxMagnifyingGlass />
+        </div>
+        <div className="inputContainer">
+           <input type="text" placeholder="Pesquisar" />
+ 
+           <button>
+             <Link to={"/search"} className="link" >Buscar</Link>
+           </button>
+        </div>
+       </Styles.Search>
+      ) : (
+        <div>
+          <Styles.SearchMobile active={isActive}>
+             <div onClick={hanldeSearchAnimation}>
+                <RxMagnifyingGlass />
+             </div>
+
+             <div className="mobileInput active">
+              <input type="text" placeholder="Pesquisar"/>
+              <button>
+                <Link to={"/search"} className="link">Buscar</Link>
+              </button>
+             </div>
+          </Styles.SearchMobile>
+        </div>
+      )}
     </div>
   )
 }

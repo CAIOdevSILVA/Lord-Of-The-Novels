@@ -13,19 +13,20 @@ const Switcher = () => {
   const dispatch = useDispatch()
 
   const colors = {
-    Color: theme === "light" ? "#222222" : "#ffffff",
-    handleColor: theme === "light" ? "#3e1e68" : "#8c52ff"
+    Color: theme === "light" ? "#f1f5f4" : "#f1f5f4",
+    handleColor: theme === "light" ? "#8c52ff" : "#8c52ff"
   }
   
   return (
     <Styles.Container onClick={() => {dispatch(setTheme())}}>
       <Switch
         onChange={()=>{}}
-        checked={theme === "dark"}
+        checked={theme === "dark" ? false : true}
         checkedIcon={false}
         uncheckedIcon={false}
-        height={25}
-        handleDiameter={30}
+        width={73}
+        height={40}
+        handleDiameter={35}
         offColor={colors.Color}
         onColor={colors.Color}
         onHandleColor={colors.handleColor}
@@ -37,6 +38,8 @@ const Switcher = () => {
               position: "absolute",
               top: "6px",
               left: "8px",
+              width: "20px",
+              height: "20px"
             }}
           />
         }
@@ -47,6 +50,8 @@ const Switcher = () => {
               position: "absolute",
               top: "7px",
               left: "7px",
+              width: "20px",
+              height: "20px"
             }}
           />
         }

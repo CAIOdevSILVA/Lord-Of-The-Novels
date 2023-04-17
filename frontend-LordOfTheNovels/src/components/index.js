@@ -2,6 +2,7 @@ import Navbar from "./Navbar/Navbar";
 import NavLinks from "./Navbar/NavLinks/NavLinks";
 import UserMenu from "./Navbar/UserMenu/UserMenu";
 import Search from "./Navbar/Search/Search";
+import SideBar from "./Navbar/SideBar/SideBar";
 
 import Footer from "./Footer";
 import Card from "./Card";
@@ -18,5 +19,6 @@ export {
   Switcher, 
   NavLinks,
   UserMenu,
-  Search
+  Search,
+  SideBar
 };
