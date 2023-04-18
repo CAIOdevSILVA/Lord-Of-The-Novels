@@ -26,7 +26,6 @@ const UserMenu = () => {
       active={user.active} 
       show={showProfile} 
       onClick={handleShowProfile} 
-      onMouseLeave={handleShowProfile}
       >
 
       <div>
