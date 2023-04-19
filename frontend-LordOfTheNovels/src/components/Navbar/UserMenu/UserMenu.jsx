@@ -12,6 +12,7 @@ const UserMenu = () => {
   const [showProfile, setShowProfile] = useState(false)
   const handleShowProfile = () => {
     setShowProfile(showProfile === false ? true : false)
+   
   }
 
 
@@ -23,15 +24,14 @@ const UserMenu = () => {
 
   return (
     <Styles.UserContainer
-      active={user.active} 
-      show={showProfile} 
+      active={user.active}  
       onClick={handleShowProfile} 
       >
-
-      <div>
+      <div className="iconContainer">
         {user.active ? <img src={img} alt="UserProfile-Logo" /> : <FaUserAlt />}
       </div>
-      <div className="UserProfile">
+
+      <Styles.UserProfile className={`${showProfile ? "showActiveProfile" : ""}`} show={showProfile}>
         {user.active ? (
           <ul className="UserLinks">
             <li>
@@ -70,7 +70,7 @@ const UserMenu = () => {
             </li>
           </ul>
         )}
-      </div>
+      </Styles.UserProfile>
     </Styles.UserContainer>
   );
 };

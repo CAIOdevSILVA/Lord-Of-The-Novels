@@ -18,7 +18,9 @@ const Switcher = () => {
   }
   
   return (
-    <Styles.Container onClick={() => {dispatch(setTheme())}}>
+    <Styles.Container onClick={() => {
+        dispatch(setTheme())
+      }}>
       <Switch
         onChange={()=>{}}
         checked={theme === "dark" ? false : true}

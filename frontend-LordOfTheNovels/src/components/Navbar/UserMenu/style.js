@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const UserContainer = styled.div`
   width: 3.75rem;
@@ -11,74 +11,72 @@ export const UserContainer = styled.div`
     display: none;
   }
 
-  div{
+  .iconContainer {
     width: 100%;
     height: 100%;
     position: relative;
     border-radius: 3.75rem;
 
-    svg{
+    svg {
       position: absolute;
-      font-size: 1.875rem;
-      left: 15px;
+      font-size: 1.7rem;
+      top: 0.75rem;
+      left: 1.0625rem;
     }
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
-  
+`;
 
-  .UserProfile {
-    position: absolute;
-    top: 4rem;
-    left: -5rem;
-    border-radius: 5px;
-    background: #8c52ff;
-    width: 15rem;
-    height: ${({active}) => active ? "16rem" : "12rem"};
-    overflow: hidden;
-    display: ${({show}) => show ? "block" : "none"};
+export const UserProfile = styled.div`
+  position: absolute;
+  top: 5.5rem;
+  left: -5rem;
+  border-radius: 5px;
+  background: #8c52ff;
+  width: 15rem;
+  height: ${({ active }) => (active ? "16rem" : "12rem")};
+  overflow: hidden;
+  display: ${({ show }) => (show ? "block" : "none")};
 
-    ul{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      list-style: none;
+  ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
 
-      li{
-        font-size: 1.3rem;
-        padding: 1rem 1rem;
-        transition: all .5s;
-        cursor: pointer;
+    li {
+      font-size: 1.3rem;
+      padding: 1rem 1rem;
+      transition: all 0.5s;
+      cursor: pointer;
 
-        &:hover:not(:last-child){
-          background: #3e1e68;
-        }
-        &:not(:last-child){
-          border-bottom: 1px solid #3e1e68;
-        }
+      &:hover:not(:last-child) {
+        background: #3e1e68;
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid #3e1e68;
+      }
 
-        &:last-child{
-          display: flex;
-          align-items: center;
-          gap: 3rem;
+      &:last-child {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
 
-          span{
-            font-weight: bold;
-          }
-        }
-
-        .link{
-          text-decoration: none;
-          color: #f1f5f4;
+        span {
           font-weight: bold;
         }
       }
+
+      .link {
+        text-decoration: none;
+        color: #f1f5f4;
+        font-weight: bold;
+      }
     }
   }
-
-`
-
+`;

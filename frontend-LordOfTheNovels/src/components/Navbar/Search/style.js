@@ -5,15 +5,18 @@ export const Search = styled.div`
   height: 3.75rem;
   background-color:${(props) => props.active ? "#f1f5f4" : "#8c52ff"};
   border-radius: 3.75rem;
+  display: flex;
+  gap: .8rem;
   position: relative;
   transition: all .5s;
   border: ${({active}) =>  active && "1px solid #8c52ff"};
+  overflow: hidden;
 
   &.active{
     width: 25rem;
     border-radius: 8px;
   }
-  div{
+  .iconContainer{
     width: 3rem;
 
     svg{
@@ -26,55 +29,51 @@ export const Search = styled.div`
   }
 
   }
+` 
 
-  .inputContainer{
-    width: 25rem;
-    height: 3.75rem;
-    display: ${(props) => props.active === true ? "flex" : "none"};
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 1000;
-    background-color: #f1f5f4;
-    margin-left: 5px;
-    border: ${({active}) =>  active && "1px solid #8c52ff"};
-    border-left: none;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    overflow: hidden;
+export const InputContainer = styled.div`
+  display: none;
+  gap: .5rem;
+  height: 100%;
+  width: 84.5%;
+  overflow: hidden;
 
-    input{
-      position: absolute;
-      top: 0;
-      left: 3rem;
-      width: 60%;
-      height: 100%;
-      flex-grow: 1;
-      border: none;
-      outline: none;
-      background: transparent;
-      font-size: 1.2rem;
-    }
+  &.active{
+    display: flex;
+  }
 
+  input{
+    width: 70%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.1rem;
 
-    button{
-      position: absolute;
-      right: 0;
-      border: none;
-      height: 100%;
-      background: #8c52ff;
-      font-size: 1.2rem;
-      width: 6.25rem;
-      font-weight: bold;
-      
-
-      .link{
-        text-decoration: none;
-        color: #f1f5f4;
-      }
+    &::placeholder{
+      font-size: 1rem;
     }
   }
-` 
+
+  button{
+    width: 30%;
+    border: none;
+    outline: none;
+    background: #8c52ff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+
+    .link{
+      text-decoration: none;
+      color: #f1f5f4;
+    }
+  }
+`
+
+
 
 
 //Mobile Design

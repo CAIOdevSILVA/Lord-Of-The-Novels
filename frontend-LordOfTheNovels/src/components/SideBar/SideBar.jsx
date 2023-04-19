@@ -18,7 +18,7 @@ const user = {
   name: "Caio Silva",
   email: "caiossantosp5560@gmail.com",
   image: img,
-  active: true,
+  active: false,
 };
 
 const SideBar = () => {
@@ -32,7 +32,7 @@ const SideBar = () => {
                 <Styles.UserContainer>
                   <div className="ImageContainer">
                     <Link to={"/profile"}>
-                      <FaUserAlt size={28} color="#8c52ff" />
+                      <FaUserAlt  color="#8c52ff" />
                     </Link>
                   </div>
                   <div className="UserData">

@@ -70,6 +70,10 @@ export const UserContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    svg{
+      font-size: 1.75rem;
+    }
   }
 
   .UserData {
@@ -91,6 +95,24 @@ export const UserContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: 360px) {
+   .ImageContainer{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+
+    svg{
+      font-size: 1.2rem;
+    }
+   }
+
+   .UserData{
+    p{
+      font-size: .9rem;
+    }
+   }
+  }
 `;
 
 
@@ -109,5 +131,10 @@ export const Item = styled.li`
     display: flex;
     align-items: center;
     gap: .2rem;
+  }
+
+
+  @media(max-width: 360px){
+    font-size: .8rem;
   }
 `

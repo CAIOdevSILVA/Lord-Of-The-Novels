@@ -16,16 +16,15 @@ const Search = ({ isMobile }) => {
     <div>
       {isMobile === false ? (
         <Styles.Search className={`${isActive ? "active" : ""}`} active={isActive}>
-        <div onClick={hanldeSearchAnimation}>
-           <RxMagnifyingGlass />
-        </div>
-        <div className="inputContainer">
-           <input type="text" placeholder="Pesquisar" />
- 
-           <button>
-             <Link to={"/search"} className="link" >Buscar</Link>
-           </button>
-        </div>
+          <div className="iconContainer" onClick={hanldeSearchAnimation}>
+            <RxMagnifyingGlass />
+          </div>
+          <Styles.InputContainer className={`${isActive ? "active" : ""}`}>
+            <input type="text" placeholder="Pesquisar..."/>
+            <button>
+              <Link to={"/search"} className="link" >Buscar</Link>
+            </button>
+          </Styles.InputContainer>
        </Styles.Search>
       ) : (
         <div>
@@ -35,10 +34,10 @@ const Search = ({ isMobile }) => {
              </div>
 
              <div className="mobileInput active">
-              <input type="text" placeholder="Pesquisar"/>
-              <button>
-                <Link to={"/search"} className="link">Buscar</Link>
-              </button>
+                <input type="text" placeholder="Pesquisar"/>
+                <button>
+                  <Link to={"/search"} className="link">Buscar</Link>
+                </button>
              </div>
           </Styles.SearchMobile>
         </div>
