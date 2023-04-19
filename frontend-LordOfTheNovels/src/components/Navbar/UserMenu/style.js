@@ -7,7 +7,7 @@ export const UserContainer = styled.div`
   border-radius: 3.75rem;
   position: relative;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 

@@ -34,7 +34,7 @@ const Search = ({ isMobile }) => {
              </div>
 
              <div className="mobileInput active">
-                <input type="text" placeholder="Pesquisar"/>
+                <input type="text" placeholder="Pesquisar..."/>
                 <button>
                   <Link to={"/search"} className="link">Buscar</Link>
                 </button>

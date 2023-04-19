@@ -55,6 +55,10 @@ export const UserMenu = styled.div`
       bottom: 0;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 50%;
+  }
 `;
 
 

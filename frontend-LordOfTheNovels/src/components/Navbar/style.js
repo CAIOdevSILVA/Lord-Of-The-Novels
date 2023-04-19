@@ -16,6 +16,12 @@ export const Container = styled.div`
     align-items: center;
   }
 
+  @media (max-width: 1346px){
+    .nav-item{
+      gap: 2rem;
+    }
+  }
+
 
   @media (max-width: 768px) {
     .nav-item{
@@ -26,6 +32,7 @@ export const Container = styled.div`
 
 export const Logo = styled.div`
   width: 9.0625rem;
+  min-width: 7rem;
 
   img{
     width: 100%;
@@ -58,7 +65,7 @@ export const ToggleSidebar = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width:1024px) {
     display: flex;
   }
 
