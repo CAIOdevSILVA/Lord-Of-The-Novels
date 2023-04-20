@@ -16,8 +16,8 @@ const Home = () => {
       <main>
         <Routes>
           <Route path='/' element={<HomePage/>} />
-          <Route path='/novels' element={<Novels/>} />
-          <Route path='/chapter' element={<Chapter/>} />
+          <Route path='/novels/:novel' element={<Novels/>} />
+          <Route path='/novels/:novel/:chapter' element={<Chapter/>} />
         </Routes>
       </main>
       <Footer/>

@@ -38,7 +38,7 @@ export const UserProfile = styled.div`
   border-radius: 5px;
   background: #8c52ff;
   width: 15rem;
-  height: ${({ active }) => (active ? "16rem" : "12rem")};
+  height: ${({ show }) => (show ? "16rem" : "12rem")};
   overflow: hidden;
   display: ${({ show }) => (show ? "block" : "none")};
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { AiOutlineInstagram, AiOutlineFacebook,  } from "react-icons/ai"
 import { RiDiscordLine } from "react-icons/ri"
 import { FaTiktok } from "react-icons/fa"
-import img from '../../assets/Logo-White.png'
+import img from '../../assets/Logo-Dark__1.png'
 
 import * as Styles from "./style"
 
@@ -11,22 +11,22 @@ const Footer = () => {
   return (
     <Styles.Container>
       <div className='content'>
-        <div>
+        <div className='socialLinks'>
           <div className='logo'>
             <img src={img} alt="Logo light" />
           </div>
           <ul className='socialMedia'>
             <li className='item'>
-              <Link to={"https://instagram.com"} ><AiOutlineInstagram size={24}/></Link>
+              <Link className='link' to={"https://instagram.com"} target={"_blank"} ><AiOutlineInstagram size={24}/></Link>
             </li>
             <li>
-              <Link to={"https://faecbook.com"} ><AiOutlineFacebook size={24}/></Link>
+              <Link className='link' to={"https://faecbook.com"} target={"_blank"}><AiOutlineFacebook size={24}/></Link>
             </li>
             <li>
-              <Link to={"https://discord.com"} ><RiDiscordLine size={24}/></Link>
+              <Link className='link' to={"https://discord.com"} target={"_blank"}><RiDiscordLine size={24}/></Link>
             </li>
             <li>
-              <Link to={"https://tiktok.com"} ><FaTiktok size={24}/></Link>
+              <Link className='link' to={"https://tiktok.com"} target={"_blank"}><FaTiktok size={24}/></Link>
             </li>
           </ul>
         </div>
@@ -34,10 +34,10 @@ const Footer = () => {
           <h2>Recursos</h2>
           <ul className='resourceContent'>
             <li>
-              <Link to={"/termos"}>Termos de uso</Link>
+              <Link className='link' to={"/termos"}>Termos de uso</Link>
             </li>
             <li>
-              <Link to={"/politica"}>Política de Privacidade</Link>
+              <Link className='link' to={"/politica"}>Política de Privacidade</Link>
             </li>
           </ul>
         </div>

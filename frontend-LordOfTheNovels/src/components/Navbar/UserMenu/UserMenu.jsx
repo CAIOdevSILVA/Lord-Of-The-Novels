@@ -10,6 +10,7 @@ import img from "../../../assets/profile.png";
 
 const UserMenu = () => {
   const [showProfile, setShowProfile] = useState(false)
+  
   const handleShowProfile = () => {
     setShowProfile(showProfile === false ? true : false)
    
