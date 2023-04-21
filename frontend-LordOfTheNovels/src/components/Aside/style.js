@@ -2,11 +2,22 @@ import styled from "styled-components";
 
 export const Container = styled.aside`
   flex-grow: 1;
-  border: 1px solid #8c52ff;
-  padding: 1rem 1rem;
-
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `
 
 export const Indications = styled.div`
-  
+  border: 1px solid #8c52ff;
+  padding: 0.5rem 1rem;
+`
+
+export const Categories = styled.div`
+  border: 1px solid #8c52ff;
+  padding: 0.5rem 1rem;
+`
+
+export const Follow = styled.div`
+  border: 1px solid #8c52ff;
+  padding: 0.5rem 1rem;
 `

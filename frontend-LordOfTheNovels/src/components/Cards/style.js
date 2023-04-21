@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const Container = styled.article`
- flex-grow: 2;
 
  .CardsContainer {
   display: grid;

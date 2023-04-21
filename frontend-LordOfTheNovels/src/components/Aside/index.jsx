@@ -1,9 +1,11 @@
 //Components
-import { Cards } from "../index"
+
+import { Cards, Categories, Follow } from "../index"
 
 
 import { novels } from "../../data"
 import * as Styles from "./style"
+
 
 const Aside = () => {
   return (
@@ -11,6 +13,12 @@ const Aside = () => {
       <Styles.Indications>
         <Cards title={"O Lord Indica"} novels={novels} vertical={true} />
       </Styles.Indications>
+      <Styles.Categories>
+        <Categories/>
+      </Styles.Categories>
+      <Styles.Follow>
+        <Follow />
+      </Styles.Follow>
     </Styles.Container>
   )
 }

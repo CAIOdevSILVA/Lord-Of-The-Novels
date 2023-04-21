@@ -10,6 +10,8 @@ import Card from "./Card";
 import Cards from "./Cards";
 import Button from "./Button";
 import Switcher from "./Switcher";
+import Categories from "./Categories/Categories";
+import Follow from "./Follow/Follow"; 
 
 export {
   Navbar,
@@ -23,4 +25,6 @@ export {
   Search,
   SideBar,
   Aside,
+  Categories,
+  Follow
 };
