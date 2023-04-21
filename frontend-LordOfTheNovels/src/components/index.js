@@ -3,6 +3,7 @@ import NavLinks from "./Navbar/NavLinks/NavLinks";
 import UserMenu from "./Navbar/UserMenu/UserMenu";
 import Search from "./Navbar/Search/Search";
 
+import Aside from "./Aside";
 import SideBar from "./SideBar/SideBar";
 import Footer from "./Footer/Footer";
 import Card from "./Card";
@@ -10,15 +11,16 @@ import Cards from "./Cards";
 import Button from "./Button";
 import Switcher from "./Switcher";
 
-export { 
-  Navbar, 
+export {
+  Navbar,
   Footer,
-  Cards, 
-  Card, 
-  Button, 
-  Switcher, 
+  Cards,
+  Card,
+  Button,
+  Switcher,
   NavLinks,
   UserMenu,
   Search,
-  SideBar
+  SideBar,
+  Aside,
 };

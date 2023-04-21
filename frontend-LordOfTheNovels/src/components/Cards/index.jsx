@@ -1,16 +1,19 @@
-import React from 'react'
+import React from "react";
 
-import Card from "../Card/index"
-import * as Styles from "./style"
+import { Card } from "../index";
+import * as Styles from "./style";
 
-const Cards = ({ novels }) => {
+const Cards = ({ title, novels, vertical }) => {
   return (
-    <Styles.Container>
-      {novels.map((novel, index) => (
-        <Card novel={novel} key={index}/>
-      ))}
+    <Styles.Container vertical={vertical}>
+      <Styles.Title>{title}</Styles.Title>
+      <div className="CardsContainer">
+        {novels.map((novel) => (
+          <Card key={novel.id} novel={novel} vertical={vertical} />
+        ))}
+      </div>
     </Styles.Container>
-  )
-}
+  );
+};
 
-export default Cards
+export default Cards;

@@ -8,7 +8,7 @@ import { Navbar, Footer }  from "../../components/index"
 
 import * as Styles from './style'
 
-const Home = () => {
+const Layout = () => {
 
   return (
     <Styles.Container>
@@ -25,4 +25,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Layout

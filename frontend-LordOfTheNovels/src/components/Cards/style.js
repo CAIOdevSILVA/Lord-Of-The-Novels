@@ -1,22 +1,26 @@
 import styled from "styled-components"
 
 export const Container = styled.article`
+ flex-grow: 2;
+
+ .CardsContainer {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  padding: 1rem 3rem;
-  place-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
-
-  
-  @media (min-width: 320px) and (max-width: 768px) {
-    padding: 1rem 2rem;
-    grid-template-columns: repeat(2, auto);
-  }
-
-
-  @media (min-width:768px) and (max-width: 1024px){
-    grid-template-columns: repeat(3, auto);
-  }
+  grid-template-columns: repeat(${({vertical}) => vertical ? 1 : 5}, auto);
+  margin-top: 1.25rem;
+  row-gap: 1rem;
+ }
 `
 
+export const Title = styled.h1`
+  font-size: 1.75rem;
+  position: relative;
+
+  &::before{
+    content: "";
+    width: 7rem;
+    height: 0.125rem;
+    background: #8c52ff;
+    position: absolute;
+    bottom: 0;
+  }
+`

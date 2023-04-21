@@ -1,9 +1,9 @@
-import React from 'react'
+import * as Styles from "./style"
 
-const Card = ({novel}) => {
+const Card = ({novel, vertical}) => {
   return (
-    <Styles.Container>
-    
+    <Styles.Container vertical={vertical}>
+      <h1>{novel.name}</h1>
     </Styles.Container>
   )
 }
