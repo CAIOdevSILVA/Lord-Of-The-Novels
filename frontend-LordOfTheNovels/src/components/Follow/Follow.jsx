@@ -4,11 +4,14 @@ import { novels } from "../../data";
 
 import * as Styles from "./style";
 
+
 const user = {
   active: false
 }
 
 const Follow = () => {
+
+
   return (
     <Styles.Container>
       <Styles.Title>{user.active ? "Você Segue" : "Crie uma Conta"}</Styles.Title>
@@ -23,8 +26,8 @@ const Follow = () => {
       ) : (
         <div className="NoFollow">
           <p>Ainda não tem uma conta na Plataforma ?</p>
-          <p><Link className="link" to={"/regiter"}>Clique aqui</Link> 
-          para ir para página de registro.</p>
+          <p><Link className="link" to={"/register"}>Clique aqui </Link> 
+           para ir para página de registro.</p>
         </div>
       )}
     </Styles.Container>

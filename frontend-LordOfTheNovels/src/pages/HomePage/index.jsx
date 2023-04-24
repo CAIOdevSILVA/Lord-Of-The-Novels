@@ -1,10 +1,23 @@
+import { useEffect } from "react"
+
 //Components
 import { Aside, Cards } from "../../components/index"
 
 import * as Styles from "./style"
 import { novels,novelsIndications } from "../../data"
 
+import { client } from "../../client"
+
 const HomePage = () => {
+  useEffect(() => {
+    getNovels()
+  }, [])
+
+  const getNovels = async () => {
+    const novels = await client.fetch('*[_type == "novels"]')
+    console.log(novels)
+    return novels
+  }
   return (
     <Styles.Container active={true}>
       <Styles.CardsContainer>
