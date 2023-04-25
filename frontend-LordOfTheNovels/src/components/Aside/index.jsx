@@ -1,8 +1,5 @@
 //Components
-
 import { Cards, Categories, Follow } from "../index"
-
-
 
 import * as Styles from "./style"
 

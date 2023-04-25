@@ -1,7 +1,7 @@
 import { useState ,useEffect } from "react"
 
 //Components
-import { Aside, Cards } from "../../components/index"
+import { Aside, Cards, Loader } from "../../components/index"
 
 import * as Styles from "./style"
 import { client } from "../../client"
@@ -9,6 +9,7 @@ import { client } from "../../client"
 
 const HomePage = () => {
   const [novelsData, setNovelsData] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const getNovels = async () => {
     const novels = await client.fetch('*[_type == "novels"]')
@@ -16,14 +17,16 @@ const HomePage = () => {
   }
 
   useEffect( () => {
+    setLoading(true)
     getNovels()
       .then((response) => {
-        setNovelsData(response)
-        console.log(response)
-        
+        setNovelsData(response)    
+        setLoading(false) 
       })
   }, [])
 
+  if(loading) return <Loader message="Estamos Carregando as Melhores Novels para Você!"/>
+  
   return (
     <Styles.Container active={true}>
       <Styles.CardsContainer>

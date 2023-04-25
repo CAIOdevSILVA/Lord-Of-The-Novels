@@ -7,6 +7,7 @@ export const Container = styled.div`
   right: 0px;
   background-color: rgba(17, 17, 17, 0.8);
   position: absolute;
+  z-index: 1000;
 `;
 
 export const UserMenu = styled.div`
@@ -15,6 +16,7 @@ export const UserMenu = styled.div`
   right: 0;
   position: absolute;
   background: #8c52ff;
+  z-index: 9999;
 
   .Wrapper {
     height: 100%;

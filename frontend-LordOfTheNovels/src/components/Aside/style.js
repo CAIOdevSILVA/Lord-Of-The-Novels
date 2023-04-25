@@ -5,7 +5,9 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 25rem;
+  max-width: 100%;
+  width: 20rem;
+
 `
 
 export const Indications = styled.div`

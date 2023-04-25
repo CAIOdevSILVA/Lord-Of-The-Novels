@@ -4,7 +4,7 @@ import { Card } from "../index";
 import * as Styles from "./style";
 
 const Cards = ({ title, novels, vertical }) => {
-  console.log(novels)
+
 
   return (
     <Styles.Container vertical={vertical}>

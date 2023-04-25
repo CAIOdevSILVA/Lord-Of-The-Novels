@@ -52,7 +52,7 @@ export const ToggleSidebar = styled.div`
 
   span{
     position: absolute;
-    z-index: 9999;
+    z-index: 99999;
     cursor: pointer;
     
     &:first-child{

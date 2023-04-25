@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: ${({ vertical }) => (vertical ? "100%" : "10rem")};
-  height: ${({ vertical }) => (vertical ? "6.5rem" : "17rem")};
   background: #2d2d2d;
   border-radius: 0.3125rem;
   overflow: hidden;
   border-bottom: 2px solid #8c52ff;
   padding: ${({vertical}) => vertical ? ".5rem" : "0"};
-  display: ${({vertical}) => vertical ? "flex" : "block"};
+  display: ${({vertical}) => vertical ? "inline-flex" : "inline-block"};
   gap: ${({vertical}) => vertical && ".5rem"};
   align-items: ${({vertical}) => vertical && "center"};
 
@@ -21,6 +20,14 @@ export const Container = styled.div`
       height: 100%;
       object-fit: cover;
     }
+  }
+
+  @media (max-width: 768px){
+    width: ${({ vertical }) => (vertical ? "100%" : "8.5rem")};
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px){
+    width: ${({ vertical }) => (vertical ? "100%" : "8.5rem")};
   }
 `;
 
@@ -63,6 +70,18 @@ export const NovelInfo = styled.div`
         text-decoration: none;
         font-weight: bold;
         color: #f1f5f4;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    h3{
+      font-size: ${({vertical}) => vertical ? "1.1rem" : ".8rem"};
+    }
+
+    .novelData{
+      .raiting {
+        font-size: .75rem;
       }
     }
   }

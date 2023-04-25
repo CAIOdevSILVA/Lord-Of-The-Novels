@@ -1,10 +1,10 @@
 import React from 'react'
 import * as Styles from "./style"
 
-const Button = ({children}) => {
+const Button = ({children, outline}) => {
   return (
     <>
-      <Styles.StyledButton>{children}</Styles.StyledButton>
+      <Styles.StyledButton outline={outline}>{children}</Styles.StyledButton>
     </>
   )
 }

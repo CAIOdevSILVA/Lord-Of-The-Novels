@@ -1,15 +1,84 @@
-import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
 
-import * as Styles from "./style"
+import { Loader, Button } from "../../components/index";
+
+import { AiFillStar } from "react-icons/ai";
+import { useParams, Link } from "react-router-dom";
+import { client, urlFor } from "../../client";
+
+import * as Styles from "./style";
 
 const Novels = () => {
-  const { novel } = useParams()
+  const { novel } = useParams();
+  const [novelData, setNovelData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const getNovel = async (element) => {
+    const data = await client.fetch(
+      `*[_type == "novels" && slug.current == "${element}"][0]`
+    );
+    return data;
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    getNovel(novel).then((response) => {
+      setNovelData(response);
+      setLoading(false);
+    });
+  }, [novel]);
+
+  console.log(novelData);
+
+  if (loading) return <Loader message="Carregando a Novel..." />;
 
   return (
     <Styles.Container>
-     <h1>Novels</h1>
-    </Styles.Container>
-  )
-}
+      <Styles.NovelHeader>
+        <div className="logo">
+          <img src={urlFor(novelData?.image) || ""} alt="Novel-Logo" loading="lazy" />
+        </div>
+        <Styles.NovelInfo>
+          <h1 className="title">{novelData?.title}</h1>
+          <div className="author">
+            <h3>Author: </h3>
+            <span>{novelData?.author}</span>
+          </div>
 
-export default Novels
+          <div className="novelRating">
+            <div className="followers">
+              <h3>Seguidores: </h3>
+              <span>45878</span>
+            </div>
+            <div className="rating">
+              <span>
+                <AiFillStar /> {novelData?.stars}
+              </span>
+              <span className="mark">(12345 votaram)</span>
+            </div>
+          </div>
+
+          <Styles.About>
+            {novelData?.about}
+            <span>[Mostar mais]</span>
+          </Styles.About>
+
+          <Styles.Tags>
+            {novelData?.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </Styles.Tags>
+
+          <div className="buttons">
+            <Link to={`/novels/${novelData?.slug?.current}/${novelData?.chapters[0]?.slug?.current}`}>
+              <Button outline={false}>Leia Agora</Button>
+            </Link>
+            <Button outline={true}>Seguir</Button>
+          </div>
+        </Styles.NovelInfo>
+      </Styles.NovelHeader>
+    </Styles.Container>
+  );
+};
+
+export default Novels;
