@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: ${({ vertical }) => (vertical ? "100%" : "9rem")};
+  width: ${({ vertical }) => (vertical ? "100%" : "10rem")};
   height: ${({ vertical }) => (vertical ? "6.5rem" : "17rem")};
   background: #2d2d2d;
   border-radius: 0.3125rem;
@@ -71,7 +71,7 @@ export const NovelInfo = styled.div`
 export const Tags = styled.div`
   display: flex;
   gap: .5rem;
-  
+  flex-wrap: wrap;
 
   .tag{
     padding: .2rem .5rem;

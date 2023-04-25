@@ -1,7 +1,10 @@
-import React from 'react'
+import { useParams } from "react-router-dom"
 import * as Styles from "./style"
 
 const Chapter = () => {
+  const { chapter } = useParams()
+
+
   return (
     <Styles.Container>
       <h1>Chapter</h1>

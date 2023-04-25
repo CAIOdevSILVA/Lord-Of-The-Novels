@@ -1,4 +1,7 @@
-import img from "../assets/Lord-of-the-Mysteries.jpg"
+import img from "../assets/profile-123456.png"
+
+
+
 
 const novels = [
   {

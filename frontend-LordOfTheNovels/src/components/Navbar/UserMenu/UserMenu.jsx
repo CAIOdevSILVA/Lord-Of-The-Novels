@@ -6,7 +6,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { Switcher } from "../../index";
 
 import * as Styles from "./style";
-import img from "../../../assets/profile.png";
+import img from "../../../assets/profile-123456.png";
 
 const UserMenu = () => {
   const [showProfile, setShowProfile] = useState(false)

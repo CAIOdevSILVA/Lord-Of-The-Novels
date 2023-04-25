@@ -11,7 +11,7 @@ import { ImBooks } from "react-icons/im"
 
 import { Switcher } from "../index";
 
-import img from "../../assets/profile.png";
+import img from "../../assets/profile-123456.png";
 import * as Styles from "./style";
 
 const user = {

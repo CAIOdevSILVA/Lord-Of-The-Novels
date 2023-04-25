@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom'
 import { AiFillStar } from "react-icons/ai"
 import * as Styles from "./style"
 
+import { urlFor } from "../../client"
+
 const Card = ({novel, vertical}) => {
   return (
     <Styles.Container vertical={vertical}>
       <div className="ImageContainer">
-        <img src={novel.image} alt="Novel Image" />
+        <img src={urlFor(novel?.image)} alt="Novel Image" />
       </div>
       <Styles.NovelInfo>
-        <h3>{novel.name}</h3>
+        <h3>{novel?.title}</h3>
         {vertical && (
           <Styles.Tags>
             {novel.tags.map((tag) => (
@@ -19,9 +21,9 @@ const Card = ({novel, vertical}) => {
           </Styles.Tags>
         )}
         <div className='novelData'>
-          <span className="raiting"><AiFillStar size={18}/>{novel.raiting}</span>
+          <span className="raiting"><AiFillStar size={18}/>{novel?.stars}</span>
           <span className='ChapterLink'>
-            <Link to={novel.link} className='link'>Cap: {novel.cap}</Link>
+            <Link to={`/novels/${novel.slug.current}`} className='link'>Cap: {novel.cap}</Link>
           </span>
         </div>
       </Styles.NovelInfo>

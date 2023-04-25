@@ -1,30 +1,36 @@
-import { useEffect } from "react"
+import { useState ,useEffect } from "react"
 
 //Components
 import { Aside, Cards } from "../../components/index"
 
 import * as Styles from "./style"
-import { novels,novelsIndications } from "../../data"
-
 import { client } from "../../client"
 
+
 const HomePage = () => {
-  useEffect(() => {
-    getNovels()
-  }, [])
+  const [novelsData, setNovelsData] = useState([])
 
   const getNovels = async () => {
     const novels = await client.fetch('*[_type == "novels"]')
-    console.log(novels)
     return novels
   }
+
+  useEffect( () => {
+    getNovels()
+      .then((response) => {
+        setNovelsData(response)
+        console.log(response)
+        
+      })
+  }, [])
+
   return (
     <Styles.Container active={true}>
       <Styles.CardsContainer>
-        <Cards title={"Últimos Lançamentos"} novels={novels}/>
-        <Cards title={"o Lord Indica"} novels={novelsIndications}/>
+        <Cards title={"Últimos Lançamentos"} novels={novelsData}/>
+        <Cards title={"o Lord Indica"} novels={novelsData}/>
       </Styles.CardsContainer>
-      <Aside />
+      <Aside novels={novelsData}/>
     </Styles.Container>
   )
 }

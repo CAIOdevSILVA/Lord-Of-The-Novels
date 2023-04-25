@@ -3,11 +3,11 @@
 import { Cards, Categories, Follow } from "../index"
 
 
-import { novels } from "../../data"
+
 import * as Styles from "./style"
 
 
-const Aside = () => {
+const Aside = ({ novels }) => {
   return (
     <Styles.Container>
       <Styles.Indications>
