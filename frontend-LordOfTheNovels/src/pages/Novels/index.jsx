@@ -8,6 +8,29 @@ import { client, urlFor } from "../../client";
 
 import * as Styles from "./style";
 
+const ChapterSection = ({novelSlug, chapter}) => {
+  const newDate = new Date(chapter?.publishedAt);
+  const formattedDate = new Intl.DateTimeFormat("pt-BR", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric"
+  }).format(newDate);
+
+  return (
+    <>
+      <li className="item">
+        <Link
+          to={`/novels/${novelSlug}/${chapter?.slug.current}`}
+          className="link"
+        >
+          {chapter?.title}
+        </Link>
+        <span>{formattedDate}</span>
+      </li>
+    </>
+  );
+};
+
 const Novels = () => {
   const { novel } = useParams();
   const [novelData, setNovelData] = useState(null);
@@ -36,7 +59,9 @@ const Novels = () => {
     <Styles.Container>
       <Styles.NovelHeader>
         <div className="logo">
-          <img src={urlFor(novelData?.image) || ""} alt="Novel-Logo" loading="lazy" />
+          {novelData?.image && (
+            <img src={urlFor(novelData?.image)} alt="Novel-Logo" />
+          )}
         </div>
         <Styles.NovelInfo>
           <h1 className="title">{novelData?.title}</h1>
@@ -70,13 +95,34 @@ const Novels = () => {
           </Styles.Tags>
 
           <div className="buttons">
-            <Link to={`/novels/${novelData?.slug?.current}/${novelData?.chapters[0]?.slug?.current}`}>
+            <Link
+              to={
+                novelData?.chapters
+                  ? `/novels/${novelData?.slug?.current}/${novelData?.chapters[0]?.slug?.current}`
+                  : ""
+              }
+            >
               <Button outline={false}>Leia Agora</Button>
             </Link>
             <Button outline={true}>Seguir</Button>
           </div>
         </Styles.NovelInfo>
       </Styles.NovelHeader>
+
+      <Styles.ChaptersSection>
+        <h1 className="title">Capítulos</h1>
+       {novelData?.chapters && novelData?.chapters.length > 0 ? (
+         <ul>
+         {novelData?.chapters.map((chapter) => (
+           <ChapterSection novelSlug={novelData?.slug.current} chapter={chapter} />
+         ))}
+       </ul>
+       ) : (
+        <p className="alert">
+          Nenhum Capítulo Adicionado ainda!
+        </p>
+       )}
+      </Styles.ChaptersSection>
     </Styles.Container>
   );
 };
