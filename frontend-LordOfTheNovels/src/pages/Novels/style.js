@@ -109,7 +109,7 @@ export const ChaptersSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
+  margin-bottom: 3rem;
 
   .title{
     font-size: 1.75rem;
@@ -139,6 +139,7 @@ export const ChaptersSection = styled.section`
     flex-direction: column;
     background-color: #2d2d2d;
     border-radius: 5px;
+    list-style: none;
 
     .item {
       width: 100%;
@@ -176,3 +177,18 @@ export const ChaptersSection = styled.section`
     border-radius: 5px;
   }
 `;
+
+
+export const Button = styled.button`
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background: #8c52ff;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f1f5f4;
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+`
