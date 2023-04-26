@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { Loader, Button } from "../../components/index";
 
 import { AiFillStar } from "react-icons/ai";
+import { IoCloseSharp } from "react-icons/io5"
+import { FaRegCommentDots } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import { client, urlFor } from "../../client";
+import img from "../../assets/profile-123456.png";
 
 import * as Styles from "./style";
 
@@ -35,6 +38,7 @@ const Novels = () => {
   const { novel } = useParams();
   const [novelData, setNovelData] = useState(null);
   const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const getNovel = async (element) => {
@@ -66,12 +70,16 @@ const Novels = () => {
   const result = novelData?.stars.reduce((star, acc) => {
     const result = (star + acc) / novelData?.stars.length;
     return result;
-  }, 0)
-  
+  }, 0);
+
   const handleShowChapter = () => {
     setShow(show === false ? true : false);
   };
-  
+
+  const handleShowModal = () => {
+    setShowModal(showModal === false ? true : false);
+  };
+
   useEffect(() => {
     setLoading(true);
     getNovel(novel).then((response) => {
@@ -106,10 +114,11 @@ const Novels = () => {
             </div>
             <div className="rating">
               <span>
-                <AiFillStar />{" "}
-                {novelData?.stars && result.toFixed(1)}
+                <AiFillStar /> {novelData?.stars && result.toFixed(1)}
               </span>
-              <span className="mark">({novelData?.stars.length} users votaram )</span>
+              <span className="mark">
+                ({novelData?.stars.length} users votaram )
+              </span>
             </div>
           </div>
 
@@ -155,17 +164,78 @@ const Novels = () => {
             </ul>
             {novelData?.chapters.length > 15 && (
               <Styles.Button onClick={handleShowChapter}>
-                 Mostrar {show ? "Menos" : "Mais"}
+                Mostrar {show ? "Menos" : "Mais"}
               </Styles.Button>
             )}
           </>
         ) : (
           <p className="alert">Nenhum Capítulo Adicionado ainda!</p>
         )}
-      </Styles.ChaptersSection> 
+      </Styles.ChaptersSection>
+
+      <Styles.CommentSection>
+        <h1 className="title">Reviews</h1>
+        <div className="commentsContainer">
+          <div className="addComment">
+            <div className="Novelrating">
+              <AiFillStar />
+              {novelData?.stars && result.toFixed(1)}{" "}
+              <span>({novelData?.stars.length} users votaram)</span>
+            </div>
+            <button
+              onClick={handleShowModal}
+            >
+              <FaRegCommentDots /> Avaliar
+            </button>
+          </div>
+
+          <ul className="listComments">
+            {novelData?.comments.map((comment) => (
+              <li>
+                <div className="UserImage">
+                  <img src={img} alt="UserFoto" />
+                </div>
+                <div className="comment">
+                  <p className="userName">{comment.postedBy.name}</p>
+                  <p>{comment.comment}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {showModal && (
+        <Styles.Modal >
+          <div className="container">
+            <div className="modalContainer">
+              <h1 className="modalTitle">Avaliar</h1>
+              <IoCloseSharp onClick={handleShowModal}/>
+              <div className="setRating">
+                <div className="stars">
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                </div>
+                <div className="raiting">
+                  <h3>Sua Nota</h3>
+                  <p>4.5</p>
+                </div>
+              </div>
+              <div className="setComment">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <div className="buttonContainer">
+                  <button>Adicionar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Styles.Modal>
+      )}
+      </Styles.CommentSection>
     </Styles.Container>
   );
 };
 
 export default Novels;
-
