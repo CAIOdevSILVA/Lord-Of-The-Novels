@@ -30,7 +30,7 @@ const Comment = ({ comments, stars, result }) => {
             </button>
           </div>
 
-          {comments && comments.length > 0 ? (
+          {comments && comments.length > 0  ? (
             <ul className="listComments">
             {comments.map((commentData, index) => (
               <li key={index}>

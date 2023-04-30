@@ -171,48 +171,9 @@ const Novels = () => {
           <p className="alert">Nenhum Capítulo Adicionado ainda!</p>
         )}
       </Styles.ChaptersSection>
-{/*novelData?.stars,novelData?.comments, handleShowModal */}
 
-       {novelData?.stars && novelData?.comments ? (
-        <Comment comments={novelData?.comments} stars={novelData?.stars} result={result}/>
-       ):(<></>)}
-      {/* <Styles.CommentSection>
-        <h1 className="title">Reviews</h1>
-        <div className="commentsContainer">
-          <div className="addComment">
-            <div className="Novelrating">
-              <AiFillStar />
-              {novelData?.stars && result.toFixed(1)}{" "}
-              <span>({novelData?.stars.length} users votaram)</span>
-            </div>
-            <button
-              onClick={handleShowModal}
-            >
-              <FaRegCommentDots /> Avaliar
-            </button>
-          </div>
+      {novelData && <Comment comments={novelData?.comments} stars={novelData?.stars} result={result}/>}
 
-          {novelData?.comments && novelData?.comments.length > 0 ? (
-            <ul className="listComments">
-            {novelData?.comments.map((comment, index) => (
-              <li key={index}>
-                <div className="UserImage">
-                  <img src={img} alt="UserFoto" />
-                </div>
-                <div className="comment">
-                  <p className="userName">{comment.postedBy.name}</p>
-                  <p>{comment.comment}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-          ) : (
-            <p className="noComment">Seja o primeiro a comentar!</p>
-          )}
-        </div>
-
-        {showModal && <Modal handleShowModal={handleShowModal}/>}
-      </Styles.CommentSection> */}
     </Styles.Container>
   );
 };
