@@ -11,8 +11,10 @@ import Cards from "./Cards";
 import Button from "./Button";
 import Switcher from "./Switcher";
 import Categories from "./Categories/Categories";
-import Follow from "./Follow/Follow"; 
-import Loader from "./Loader/index"
+import Follow from "./Follow/Follow";
+import Loader from "./Loader/index";
+import Modal from "./Modal/index";
+import Comment from "./Comment/index";
 
 export {
   Navbar,
@@ -28,5 +30,7 @@ export {
   Aside,
   Categories,
   Follow,
-  Loader
+  Loader,
+  Modal,
+  Comment
 };

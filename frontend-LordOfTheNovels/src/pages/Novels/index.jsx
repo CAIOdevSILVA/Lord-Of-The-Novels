@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { Loader, Button } from "../../components/index";
+import { Loader, Button, Comment } from "../../components/index";
+
 
 import { AiFillStar } from "react-icons/ai";
-import { IoCloseSharp } from "react-icons/io5"
 import { FaRegCommentDots } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import { client, urlFor } from "../../client";
-import img from "../../assets/profile-123456.png";
+
 
 import * as Styles from "./style";
 
@@ -38,7 +38,7 @@ const Novels = () => {
   const { novel } = useParams();
   const [novelData, setNovelData] = useState(null);
   const [show, setShow] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  
   const [loading, setLoading] = useState(false);
 
   const getNovel = async (element) => {
@@ -76,9 +76,7 @@ const Novels = () => {
     setShow(show === false ? true : false);
   };
 
-  const handleShowModal = () => {
-    setShowModal(showModal === false ? true : false);
-  };
+ 
 
   useEffect(() => {
     setLoading(true);
@@ -155,8 +153,9 @@ const Novels = () => {
             <ul>
               {novelData?.chapters
                 .slice(0, show ? novelData?.chapters.length : 15)
-                .map((chapter) => (
+                .map((chapter, index) => (
                   <ChapterSection
+                    key={index}
                     novelSlug={novelData?.slug.current}
                     chapter={chapter}
                   />
@@ -172,8 +171,12 @@ const Novels = () => {
           <p className="alert">Nenhum Capítulo Adicionado ainda!</p>
         )}
       </Styles.ChaptersSection>
+{/*novelData?.stars,novelData?.comments, handleShowModal */}
 
-      <Styles.CommentSection>
+       {novelData?.stars && novelData?.comments ? (
+        <Comment comments={novelData?.comments} stars={novelData?.stars} result={result}/>
+       ):(<></>)}
+      {/* <Styles.CommentSection>
         <h1 className="title">Reviews</h1>
         <div className="commentsContainer">
           <div className="addComment">
@@ -189,9 +192,10 @@ const Novels = () => {
             </button>
           </div>
 
-          <ul className="listComments">
-            {novelData?.comments.map((comment) => (
-              <li>
+          {novelData?.comments && novelData?.comments.length > 0 ? (
+            <ul className="listComments">
+            {novelData?.comments.map((comment, index) => (
+              <li key={index}>
                 <div className="UserImage">
                   <img src={img} alt="UserFoto" />
                 </div>
@@ -202,38 +206,13 @@ const Novels = () => {
               </li>
             ))}
           </ul>
+          ) : (
+            <p className="noComment">Seja o primeiro a comentar!</p>
+          )}
         </div>
 
-        {showModal && (
-        <Styles.Modal >
-          <div className="container">
-            <div className="modalContainer">
-              <h1 className="modalTitle">Avaliar</h1>
-              <IoCloseSharp onClick={handleShowModal}/>
-              <div className="setRating">
-                <div className="stars">
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                </div>
-                <div className="raiting">
-                  <h3>Sua Nota</h3>
-                  <p>4.5</p>
-                </div>
-              </div>
-              <div className="setComment">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-                <div className="buttonContainer">
-                  <button>Adicionar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Styles.Modal>
-      )}
-      </Styles.CommentSection>
+        {showModal && <Modal handleShowModal={handleShowModal}/>}
+      </Styles.CommentSection> */}
     </Styles.Container>
   );
 };
