@@ -55,21 +55,17 @@ export const CommentSection = styled.section`
           font-size: 0.8rem;
           margin-left: 0.5rem;
         }
-      }
 
-      button {
-        padding: 0.8rem 2rem;
-        border-radius: 5px;
-        background: #8c52ff;
-        outline: none;
-        border: none;
-        color: #f1f5f4;
-        font-size: 1.2rem;
-        transition: all 0.5s;
-        cursor: pointer;
+        @media (max-width: 500px) {
+          font-size: 1.3rem;
 
-        &:hover {
-          background: #3e1e68;
+          svg {
+            font-size: 2rem;
+          }
+
+          span {
+            display: none;
+          }
         }
       }
     }
@@ -77,42 +73,61 @@ export const CommentSection = styled.section`
     .listComments {
       list-style: none;
       width: 100%;
+      display: flex;
       flex-direction: column;
-      border-radius: 5px;
-      background: #2d2d2d;
+
+      gap: 1rem;
 
       li {
-        padding: 1rem;
-        border-bottom: 1px solid #111;
         display: inline-flex;
-        width: 100%;
+        flex-direction: column;
+        background: #2d2d2d;
+        padding: .5rem;
+        border-radius: 5px;
+        gap: .5rem;
 
-        &:last-child {
-          border: none;
-        }
-
-        .UserImage {
-          width: 8%;
+        .UserData {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          gap: .5rem;
+          padding: .5rem;
+          border-bottom: 1px solid #111;
 
           img {
             width: 3rem;
             height: 3rem;
             object-fit: cover;
           }
-        }
-
-        .comment {
-          display: flex;
-          flex-direction: column;
-          font-size: 0.9rem;
-
-          .userName {
-            font-weight: bold;
+          .userName{
             font-size: 1.2rem;
-
-            &::first-letter {
+            font-weight: 500;
+            
+            &::first-letter{
               text-transform: uppercase;
             }
+          }
+        }
+
+        .comment{
+          padding: .5rem;
+        }
+
+
+        @media (max-width: 500px){
+          .UserData{
+            img{
+              width: 2rem;
+              height: 2rem;
+            }
+
+            .userName{
+              font-size: 1rem;
+            }
+          }
+
+          .comment{
+            font-size: .8rem;
           }
         }
       }

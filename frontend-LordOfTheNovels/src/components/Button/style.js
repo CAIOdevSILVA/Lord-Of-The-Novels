@@ -15,4 +15,9 @@ export const StyledButton = styled.button`
   &:hover{
     opacity: .8;
   }
+
+  @media (max-width: 400px) {
+    font-size: .9rem;
+    padding: .7rem 1.2rem;
+  }
 `

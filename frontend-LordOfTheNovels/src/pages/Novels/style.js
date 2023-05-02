@@ -6,6 +6,10 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 0 1.25rem 1.25rem;
   gap: 1rem;
+
+  @media (max-width: 400px){
+    padding: 0 0 1.25rem;
+  }
 `;
 
 export const NovelHeader = styled.section`
@@ -18,6 +22,7 @@ export const NovelHeader = styled.section`
     width: 15.625rem;
     height: 30%;
     overflow: hidden;
+    
 
     img {
       width: 100%;
@@ -37,6 +42,26 @@ export const NovelHeader = styled.section`
     color: #f1f5f4;
   }
 
+
+  @media(max-width: 500px) {
+    flex-wrap: wrap;
+    .logo{
+      height: 20%;
+      flex-grow: 1;
+    }
+    .title{
+      font-size: 1.7rem;
+    }
+  }
+`;
+
+
+export const NovelInfo = styled.div`
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  
   .author {
     display: flex;
     gap: 0.3rem;
@@ -74,24 +99,63 @@ export const NovelHeader = styled.section`
       }
     }
   }
-`;
 
-export const NovelInfo = styled.div`
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  @media (max-width: 500px){
+    flex-grow: 1;
+    gap: .8rem;
+
+    .author {
+    h3{
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  .novelRating {
+    .followers {
+      h3{
+        font-size: 1rem;
+      }
+    }
+
+    .rating {
+      display: flex;
+      font-size: .8rem;
+
+      svg {
+        font-size: 1.1rem;
+        color: #ffd06a;
+      }
+
+      .mark {
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+  }
 `;
 
 export const About = styled.p`
   width: 100%;
   font-size: 0.8rem;
   color: #f1f5f4;
+
+  .ShowMore{
+    font-size: .8rem;
+    color: #2d2d2d;
+    margin: .5rem;
+    cursor: pointer;
+  }
 `;
 
 export const Tags = styled.div`
   display: flex;
   gap: 0.5rem;
+  margin-bottom: .8rem;
 
   span {
     font-size: 0.8rem;
@@ -100,6 +164,11 @@ export const Tags = styled.div`
     border-radius: 5px;
     color: #f1f5f4;
     cursor: pointer;
+  }
+
+  @media (max-width: 500px){
+    font-size: .7rem;
+    padding: .2rem .4rem;
   }
 `;
 
@@ -175,6 +244,28 @@ export const ChaptersSection = styled.section`
     color: #f1f5f4;
     border-radius: 5px;
   }
+
+
+  @media (max-width: 500px){
+    gap: 1rem;
+
+    ul{
+      li{
+        padding: .8rem;
+        font-size: .8rem;
+
+        .link{
+          width: 50%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        span{
+          font-size: .5rem;
+        }
+      }
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -189,6 +280,7 @@ export const Button = styled.button`
   font-size: 1.1rem;
   outline: none;
   border: none;
+
 `;
 
 

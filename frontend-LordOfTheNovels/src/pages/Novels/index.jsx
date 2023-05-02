@@ -4,7 +4,6 @@ import { Loader, Button, Comment } from "../../components/index";
 
 
 import { AiFillStar } from "react-icons/ai";
-import { FaRegCommentDots } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import { client, urlFor } from "../../client";
 
@@ -38,6 +37,8 @@ const Novels = () => {
   const { novel } = useParams();
   const [novelData, setNovelData] = useState(null);
   const [show, setShow] = useState(false);
+  const [showAbout, setShowAbout] = useState(false)
+  const user = true
   
   const [loading, setLoading] = useState(false);
 
@@ -76,8 +77,10 @@ const Novels = () => {
     setShow(show === false ? true : false);
   };
 
- 
-
+  function truncate(str, n) {
+    return str?.length > n ? str.substring(0, n - 1) + "..." : str
+  }
+  
   useEffect(() => {
     setLoading(true);
     getNovel(novel).then((response) => {
@@ -121,8 +124,19 @@ const Novels = () => {
           </div>
 
           <Styles.About>
-            {novelData?.about}
-            {/* <span>[Mostar mais]</span> */}
+            {showAbout ? (
+              <>
+                {novelData?.about}
+              </>
+            ) : (
+              <>
+                {truncate(novelData?.about, 350)}
+              </>
+            )}
+            <span 
+              className="ShowMore" 
+              onClick={() => setShowAbout(showAbout === false ? true : false)}
+            >[Mostar {showAbout ? "Menos" : "Mais"}]</span> 
           </Styles.About>
 
           <Styles.Tags>
@@ -141,7 +155,14 @@ const Novels = () => {
             >
               <Button outline={false}>Leia Agora</Button>
             </Link>
-            <Button outline={true}>Seguir</Button>
+          
+            <Link
+              to={
+                !user && "/login"
+              }
+            >
+                <Button outline={true}>Seguir</Button>
+            </Link>
           </div>
         </Styles.NovelInfo>
       </Styles.NovelHeader>
