@@ -89,8 +89,6 @@ const Novels = () => {
     });
   }, [novel]);
 
-  console.log(novelData);
-
   if (loading) return <Loader message="Carregando a Novel..." />;
 
   return (

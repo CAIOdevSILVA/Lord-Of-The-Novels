@@ -19,7 +19,6 @@ export const Modal = styled.section`
 
     .modalContainer {
       background: #f1f5f4;
-      width: 30rem;
       border-radius: 5px;
       color: #111;
       display: inline-flex;
@@ -63,10 +62,10 @@ export const Modal = styled.section`
         display: flex;
         justify-content: space-around;
         align-items: center;
+        gap: 2rem;
 
         .stars {
-
-          svg{
+          svg {
             font-size: 3rem;
             cursor: pointer;
           }
@@ -90,31 +89,53 @@ export const Modal = styled.section`
         }
       }
 
-      .setComment{
+      .setComment {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
 
-        #commentArea{
+        #commentArea {
           width: 100%;
           height: 10rem;
           resize: none;
           border: 1px solid #8c52ff;
           border-radius: 5px;
-          padding: .5rem;
+          padding: 0.5rem;
           caret-color: #8c52ff;
           font-size: 1.1rem;
           outline: none;
 
-          &::placeholder{
-            font-size: .9rem;
+          &::placeholder {
+            font-size: 0.9rem;
           }
         }
 
-        .buttonContainer{
+        .buttonContainer {
           width: 100%;
           display: flex;
           justify-content: flex-end;
+        }
+      }
+
+      @media (max-width: 500px) {
+        max-width: 100%;
+
+        .setRating {
+          .stars {
+            svg {
+              font-size: 1.5rem;
+              cursor: pointer;
+            }
+          }
+
+          .raiting {
+            width: 6.5rem;
+            height: 6.5rem;
+
+            p {
+              font-size: 3rem;
+            }
+          }
         }
       }
     }
