@@ -84,10 +84,10 @@ const Chapter = () => {
       normal: ({ children }) => (
         <p
           style={{
-            color: "#f1f5f4",
             marginBottom: "1.5rem",
             fontSize: "1.1rem",
           }}
+          className="NovelColorFont"
         >
           {children}
         </p>

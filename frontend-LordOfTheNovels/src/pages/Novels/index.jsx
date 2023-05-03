@@ -121,7 +121,7 @@ const Novels = () => {
                 <AiFillStar /> { starRating > 0 ? starRating.toFixed(1) : 4.5}
               </span>
               <span className="mark">
-                (5 users votaram )
+                ({novelData?.feedback > 0 ? novelData?.feedback.length : 0} users votaram )
               </span>
             </div>
           </div>

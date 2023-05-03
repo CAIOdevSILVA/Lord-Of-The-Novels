@@ -14,7 +14,7 @@ function App() {
   const  { theme }  = useSelector((rootReducer) => rootReducer.theme)
   
   return (
-  <ThemeProvider theme={themes[ theme ?? "light"]}>
+  <ThemeProvider theme={themes[theme ?? "light"]}>
     <GlobalStyles/>
     <Routes>
       <Route path="/*" element={<Layout />} />

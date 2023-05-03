@@ -31,7 +31,7 @@ export const ListItem = styled.li`
   
   gap: 0.5rem;
   padding: 0.5rem;
-  color: ${(props) => (props.active ? "#8c52ff" : "#f1f5f4")};
+  color: ${(props) => (props.active ? "#8c52ff" : props.theme.colors.tertiary)};
 
   svg {
     font-size: 2rem;

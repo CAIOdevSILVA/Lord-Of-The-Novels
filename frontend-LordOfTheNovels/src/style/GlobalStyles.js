@@ -8,9 +8,5 @@ export const GlobalStyles = createGlobalStyle`
   font-family: 'Nunito Sans', sans-serif;
  }
 
- body{
-  background-color: #111;
-  color: #f1f5f4;
- }
 `
 

@@ -5,6 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 3.5rem;
   padding: 0 1.25rem;
+
+  .ChapterBodyText{
+    .NovelColorFont{
+      color: ${props => props.theme.colors.tertiary};
+    }
+  }
+
 `
 
 export const ChapterHeader = styled.section`
@@ -66,6 +73,38 @@ export const ChapterHeader = styled.section`
 
         svg{
           font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 500px){
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .NavButtons{
+      gap: 1rem;
+
+      #Chapters{
+        padding: .2rem;
+        font-size: .65rem;
+      }
+
+      .options{
+        padding: .3rem;
+        font-size: .65rem;
+      }
+
+      .navigationButtons{
+        gap: 1rem;
+
+        .arrowButton{
+          padding: .3rem;
+
+          svg{
+            font-size: .8rem;
+          }
         }
       }
     }

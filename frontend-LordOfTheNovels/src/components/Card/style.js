@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: ${({ vertical }) => (vertical ? "100%" : "10rem")};
-  background: #2d2d2d;
+  background: ${props => props.theme.colors.CardColor};
   border-radius: 0.3125rem;
   overflow: hidden;
   border-bottom: 2px solid #8c52ff;
@@ -97,5 +97,6 @@ export const Tags = styled.div`
     background: #3e1e68;
     border-radius: 5px;
     font-size: .625rem;
+    color: #f1f5f4;
   }
 `

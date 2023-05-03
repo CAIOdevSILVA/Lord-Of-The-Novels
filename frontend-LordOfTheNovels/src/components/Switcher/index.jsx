@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { setTheme } from '../../redux/theme/slice';
 
@@ -23,7 +23,7 @@ const Switcher = () => {
       }}>
       <Switch
         onChange={()=>{}}
-        checked={theme === "dark" ? false : true}
+        checked={theme === "light" ? false : true}
         checkedIcon={false}
         uncheckedIcon={false}
         width={73}

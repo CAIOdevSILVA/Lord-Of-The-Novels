@@ -48,6 +48,7 @@ export const UserProfile = styled.div`
     display: flex;
     flex-direction: column;
     list-style: none;
+    color: #f1f5f4;
 
     li {
       font-size: 1.3rem;

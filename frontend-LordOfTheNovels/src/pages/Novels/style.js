@@ -39,7 +39,7 @@ export const NovelHeader = styled.section`
 
   .title {
     font-size: 2rem;
-    color: #f1f5f4;
+    color: ${props => props.theme.colors.tertiary};
   }
 
 
@@ -95,7 +95,7 @@ export const NovelInfo = styled.div`
 
       .mark {
         font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.2);
+        color: ${props => props.theme.colors.tertiary};
       }
     }
   }
@@ -132,7 +132,6 @@ export const NovelInfo = styled.div`
 
       .mark {
         font-size: 0.6rem;
-        color: rgba(255, 255, 255, 0.2);
       }
     }
   }
@@ -142,13 +141,16 @@ export const NovelInfo = styled.div`
 export const About = styled.p`
   width: 100%;
   font-size: 0.8rem;
-  color: #f1f5f4;
+  color: ${props => props.theme.colors.tertiary};
+  
 
   .ShowMore{
     font-size: .8rem;
-    color: #2d2d2d;
+    color:${props => props.theme.colors.tertiary};
     margin: .5rem;
     cursor: pointer;
+    border-bottom: 1px solid ${props => props.theme.colors.tertiary};
+    opacity: .2;
   }
 `;
 
@@ -206,7 +208,7 @@ export const ChaptersSection = styled.section`
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #2d2d2d;
+    background-color: ${props => props.theme.colors.alternativeCard};
     border-radius: 5px;
     list-style: none;
 
@@ -224,7 +226,7 @@ export const ChaptersSection = styled.section`
 
       .link {
         text-decoration: none;
-        color: #f1f5f4;
+        color: ${props => props.theme.colors.tertiary};
         transition: all 0.5s;
         &:hover {
           margin-left: 5px;
@@ -233,15 +235,16 @@ export const ChaptersSection = styled.section`
 
       span {
         font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.2);
+        color: ${props => props.theme.colors.tertiary};
+        opacity: .3;
       }
     }
   }
 
   .alert {
     padding: 1rem;
-    background-color: #2d2d2d;
-    color: #f1f5f4;
+    background-color: ${props => props.theme.colors.alternativeCard};
+    color: ${props => props.theme.colors.secondary};
     border-radius: 5px;
   }
 

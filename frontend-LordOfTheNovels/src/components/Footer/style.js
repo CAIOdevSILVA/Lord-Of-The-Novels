@@ -42,7 +42,7 @@ export const Container = styled.div`
         li {
           .link {
             text-decoration: none;
-            color: #f1f5f4;
+            color: ${props => props.theme.colors.tertiary};
             transition: all 0.5s;
 
             &:hover {
@@ -74,7 +74,7 @@ export const Container = styled.div`
         li {
           .link {
             text-decoration: none;
-            color: #f1f5f4;
+            color: ${props => props.theme.colors.tertiary};
             transition: .5s;
 
             &:hover{

@@ -83,7 +83,7 @@ export const CommentSection = styled.section`
       li {
         display: inline-flex;
         flex-direction: column;
-        background: #2d2d2d;
+        background: ${props => props.theme.colors.alternativeCard};
         padding: .5rem;
         border-radius: 5px;
         gap: .5rem;
@@ -138,7 +138,8 @@ export const CommentSection = styled.section`
     .noComment {
       padding: 1rem;
       border-radius: 5px;
-      background: #2d2d2d;
+      background: ${props => props.theme.colors.alternativeCard};
+      color: ${props => props.theme.colors.tertiary};
     }
   }
 `;
