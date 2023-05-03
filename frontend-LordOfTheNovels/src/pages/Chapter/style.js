@@ -72,7 +72,28 @@ export const ChapterHeader = styled.section`
   }
 `
 
+export const NavDownButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
 
+  .arrowDownButton{
+    padding: .5rem;
+    background-color: #8c52ff;
+    outline: none;
+    border: none;
+    color: #f1f5f4;
+    font-weight: bold;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+
+    svg{
+      font-size: 1rem;
+    }
+  }
+`
 
 
 //Modal

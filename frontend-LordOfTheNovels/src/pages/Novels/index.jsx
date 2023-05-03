@@ -48,8 +48,9 @@ const Novels = () => {
         about,
         author,
         chapters[],
-        comments[]{
+        feedback[]{
           comment,
+          stars,
           _key,
           postedBy->{
             _id,
@@ -68,11 +69,13 @@ const Novels = () => {
     return data;
   };
 
-  const result = novelData?.stars.reduce((star, acc) => {
-    const result = (star + acc) / novelData?.stars.length;
-    return result;
-  }, 0);
+  const starRating = novelData?.feedback ? novelData?.feedback.map((element) => {
+    return element.stars
+  }).reduce((star, acc) => {
+    return star + acc
+  }, 0) / novelData?.feedback.length : 0
 
+  
   const handleShowChapter = () => {
     setShow(show === false ? true : false);
   };
@@ -88,6 +91,8 @@ const Novels = () => {
       setLoading(false);
     });
   }, [novel]);
+
+  console.log(novelData)
 
   if (loading) return <Loader message="Carregando a Novel..." />;
 
@@ -113,10 +118,10 @@ const Novels = () => {
             </div>
             <div className="rating">
               <span>
-                <AiFillStar /> {novelData?.stars && result.toFixed(1)}
+                <AiFillStar /> { starRating > 0 ? starRating.toFixed(1) : 4.5}
               </span>
               <span className="mark">
-                ({novelData?.stars.length} users votaram )
+                (5 users votaram )
               </span>
             </div>
           </div>
@@ -191,7 +196,7 @@ const Novels = () => {
         )}
       </Styles.ChaptersSection>
 
-      {novelData && <Comment comments={novelData?.comments} stars={novelData?.stars} result={result}/>}
+      {novelData && <Comment comments={novelData?.feedback} starRating={starRating} />}
 
     </Styles.Container>
   );

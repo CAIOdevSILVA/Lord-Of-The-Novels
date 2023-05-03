@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Loader } from "../../components/index";
+import { Loader,Comment } from "../../components/index";
 
 import { Link, useParams } from "react-router-dom";
 import { BsFillGearFill } from "react-icons/bs";
@@ -28,15 +28,15 @@ const OptionsModal = ({ handleShowModal }) => {
               <h5>Fonte</h5>
               <select id="SelectFont">
                 <option value="Nunito">Nunito</option>
-                <option value="Popins">Popins</option>
-                <option value="Marriweather">Marriweather</option>
+                <option value="Popins">Poppins</option>
+                <option value="Marriweather">Merriweather</option>
               </select>
             </div>
             <div className="fontSizeOptions">
               <h5>Tamanho</h5>
               <select id="SelectFont">
                 {FontSizes.map((font) => (
-                  <option key={font} value={font}>{font}</option>
+                  <option value={font}>{font}</option>
                 ))}
               </select>
             </div>
@@ -57,7 +57,21 @@ const Chapter = () => {
   const getNovel = async (element) => {
     const data = await client.fetch(
       `*[_type == "novels" && slug.current == "${element}"][0]{
-        chapters[],
+        chapters[]{
+          body,
+          slug,
+          title,
+          feedback[]{
+            comment,
+            stars,
+            postedBy->{
+              _id,
+              name,
+              email,
+              imageUrl       
+            },
+          }
+        },
         slug,
         title 
       }`
@@ -85,6 +99,8 @@ const Chapter = () => {
     return element?.slug.current === chapter;
   })[0];
 
+  console.log(chapterBody)
+
   const FindIndex = novelInfo?.chapters.findIndex((element) => {
     return element.title === chapterBody.title
   })
@@ -92,6 +108,13 @@ const Chapter = () => {
   const handleShowModal = () => {
     setShowModal(showModal === false ? true : false);
   };
+
+  const starRating = chapterBody?.feedback ? chapterBody?.feedback.map((element) => {
+    return element.stars
+  }).reduce((star, acc) => {
+    return star + acc
+  }, 0) / chapterBody?.feedback.length : 0
+
 
   useEffect(() => {
     setLoading(true);
@@ -102,8 +125,6 @@ const Chapter = () => {
     });
   }, [novel]);
 
-  console.log(chapterBody);
-  console.log(FindIndex);
 
   if (loading) return <Loader message={"Estamos Carregando o seu Capitulo."} />;
 
@@ -127,11 +148,12 @@ const Chapter = () => {
                 window.location.href = url;
               }
             }}
+           defaultValue={chapterBody?.title}
           >
             {novelInfo?.chapters.map((cap, index) => (
               <option
+                key={cap?.title}
                 value={cap?.title}
-                selected={cap.slug.current === chapter ? true : false}
               >
                 Cap: {index}
               </option>
@@ -143,16 +165,21 @@ const Chapter = () => {
             Opções
           </button>
           <div className="navigationButtons">
-          <Link to={`/novels/${novelInfo?.slug.current}/${novelInfo?.chapters[FindIndex - 1]?.slug.current}`}>
-            <button className="arrowButton">
+          <a href={
+            FindIndex - 1 < 0 ? `/novels/${novel}/${novelInfo?.chapters[0]?.slug.current}` : `/novels/${novel}/${novelInfo?.chapters[FindIndex - 1]?.slug.current}`
+          }
+          >
+            <button className="arrowButton" style={{cursor: FindIndex - 1 < 0 ? "not-allowed" : "pointer", opacity: FindIndex - 1 < 0 ? ".5" : "1"}} >
                 <AiOutlineArrowLeft />
               </button>
-           </Link>
-           <Link to={`/novels/${novelInfo?.slug.current}/${novelInfo?.chapters[FindIndex + 1]?.slug.current}`}>
-            <button className="arrowButton">
+           </a>
+           <a href={
+            FindIndex + 1 >= novelInfo?.chapters.length ? `/novels/${novel}/${novelInfo?.chapters[novelInfo?.chapters.length - 1]?.slug.current}` : `/novels/${novel}/${novelInfo?.chapters[FindIndex + 1]?.slug.current}`
+           }>
+            <button className="arrowButton" style={{cursor: FindIndex + 1 >= novelInfo?.chapters.length ? "not-allowed" : "pointer", opacity: FindIndex + 1 >= novelInfo?.chapters.length ? ".5" : "1"}}>
                 <AiOutlineArrowRight />
               </button>
-           </Link>
+           </a>
            
           </div>
         </div>
@@ -160,6 +187,26 @@ const Chapter = () => {
       <div className="ChapterBodyText">
         <PortableText value={chapterBody?.body} components={ptComponents} />
       </div>
+
+      <Styles.NavDownButtons>
+        <a href={
+           FindIndex - 1 < 0 ? `/novels/${novel}/${novelInfo?.chapters[0]?.slug.current}` : `/novels/${novel}/${novelInfo?.chapters[FindIndex - 1]?.slug.current}`
+        }>
+          <button className="arrowDownButton" style={{cursor: FindIndex - 1 < 0 ? "not-allowed" : "pointer", opacity: FindIndex - 1 < 0 ? ".5" : "1"}}>
+            <AiOutlineArrowLeft /> Anterior
+          </button>
+        </a>
+
+        <a href={
+           FindIndex + 1 >= novelInfo?.chapters.length ? `/novels/${novel}/${novelInfo?.chapters[novelInfo?.chapters.length - 1]?.slug.current}` : `/novels/${novel}/${novelInfo?.chapters[FindIndex + 1]?.slug.current}`
+        }>
+          <button className="arrowDownButton" style={{cursor: FindIndex + 1 >= novelInfo?.chapters.length ? "not-allowed" : "pointer", opacity: FindIndex + 1 >= novelInfo?.chapters.length ? ".5" : "1"}}>
+            Próximo <AiOutlineArrowRight /> 
+          </button>
+        </a>
+      </Styles.NavDownButtons>
+
+      <Comment comments={chapterBody?.feedback} starRating={starRating}/>
 
       {showModal && <OptionsModal handleShowModal={handleShowModal} />}
     </Styles.Container>

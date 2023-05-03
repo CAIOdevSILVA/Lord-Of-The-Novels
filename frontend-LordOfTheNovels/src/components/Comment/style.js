@@ -4,6 +4,8 @@ export const CommentSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 1.25rem;
+  margin-bottom:  1.25rem;
 
   .title {
     font-size: 1.75rem;

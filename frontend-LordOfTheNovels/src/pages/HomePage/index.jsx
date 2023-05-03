@@ -11,10 +11,21 @@ const HomePage = () => {
   const [novelsData, setNovelsData] = useState([])
   const [loading, setLoading] = useState(false)
 
-  const getNovels = async () => {
-    const novels = await client.fetch('*[_type == "novels"]')
-    return novels
-  }
+  const getNovels = async (element) => {
+    const novels = await client.fetch(
+      `*[_type == "novels"]{
+        feedback[]{
+          stars
+        },
+        image,
+        slug,
+        tags[],
+        title 
+      }`
+    );
+    return novels;
+  };
+
 
   useEffect( () => {
     setLoading(true)

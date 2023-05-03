@@ -7,12 +7,15 @@ import { urlFor } from "../../client";
 
 const Card = ({ novel, vertical }) => {
 
-  const result = novel?.stars.reduce((star, acc) => {
-    const result = (star + acc) / novel?.stars.length;
-    return result;
-  }, 0)
+  const starRating = novel?.feedback ? novel?.feedback.map((element) => {
+    return element.stars
+  }).reduce((star, acc) => {
+    return star + acc
+  }, 0) / novel?.feedback.length  : 4
 
+  const result = 4.7888
 
+  console.log(novel)
   return (
     <Styles.Container vertical={vertical}>
       <div className="ImageContainer">
@@ -32,7 +35,7 @@ const Card = ({ novel, vertical }) => {
         <div className="novelData">
           <span className="raiting">
             <AiFillStar size={18} />
-            {result.toFixed(1)}
+            {starRating.toFixed(1) }
           </span>
           <span className="ChapterLink">
             <Link to={`/novels/${novel.slug.current}`} className="link">

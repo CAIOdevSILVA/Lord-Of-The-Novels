@@ -7,7 +7,7 @@ import { FaRegCommentDots } from "react-icons/fa";
 
 import * as Styles from "./style";
 
-const Comment = ({ comments, stars, result }) => {
+const Comment = ({ comments, starRating}) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -20,8 +20,8 @@ const Comment = ({ comments, stars, result }) => {
         <div className="addComment">
           <div className="Novelrating">
             <AiFillStar />
-            {stars && result.toFixed(1)}{" "}
-            <span>({stars.length} users votaram)</span>
+            {starRating > 0 ? starRating.toFixed(1) : "Seja o primeiro a avaliar."}
+            {starRating > 0 && <span>({comments && comments.length} users votaram)</span>}
           </div>
           <Button>
             <div onClick={handleShowModal} style={{ display: "flex" }}>
