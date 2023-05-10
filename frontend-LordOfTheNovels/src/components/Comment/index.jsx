@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 import img from "../../assets/profile-123456.png";
 import { Modal, Button } from "../index";
@@ -10,9 +10,10 @@ import * as Styles from "./style";
 const Comment = ({ comments, starRating}) => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleShowModal = () => {
+  const handleShowModal = useCallback(() => {
     setShowModal(showModal === false ? true : false);
-  };
+  }, [showModal]);
+  
   return (
     <Styles.CommentSection>
       <h1 className="title">Reviews</h1>

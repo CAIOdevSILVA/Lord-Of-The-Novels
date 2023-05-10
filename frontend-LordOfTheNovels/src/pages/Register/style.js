@@ -7,6 +7,8 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   background: #111;
+  overflow: auto;
+  padding: 2rem 0;
 `
 
 export const Wrapper = styled.div`
@@ -20,7 +22,7 @@ export const Wrapper = styled.div`
   border: 2px solid #8c52ff;
   border-radius: 5px;
 
-  .Login__Header{
+  .Register__Header{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -35,19 +37,19 @@ export const Wrapper = styled.div`
     }
   }
 
-  .Login__Form{
+  .Register__Form{
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     width: 100%;
 
-    .Login__Email, .Login__Password{
+    .Register__Email, .Register__Password, .Register__Name, .Register__Check__Password{
       display: flex;
       flex-direction: column;
 
       label{
-        color: #8c52ff;
         font-size: .8rem;
+        color: #8c52ff;
       }
 
       input{
@@ -97,14 +99,14 @@ export const Wrapper = styled.div`
     opacity: .5;
   }
 
-  .Login__Google{
+  .Register__Google{
     width: 100%;
     height: 40px;
     border-radius: 5px;
     background-color: darkgreen;
   }
 
-  .Login__Facebook{
+  .Register__Facebook{
     width: 100%;
     height: 40px;
     border-radius: 5px;

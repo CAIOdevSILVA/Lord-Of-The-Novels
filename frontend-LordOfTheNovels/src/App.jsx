@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { Routes, Route } from "react-router-dom"
 
 //Components
-import { Layout, Login } from "./pages/index"
+import { Layout, Login, Register } from "./pages/index"
 
 import { GlobalStyles } from "./style/GlobalStyles"
 import themes from "./style/themes/index"
@@ -19,6 +19,7 @@ function App() {
     <Routes>
       <Route path="/*" element={<Layout />} />
       <Route path="/login" element={<Login/>} />
+      <Route path="/register" element={<Register />}/>
     </Routes>
   </ThemeProvider>
   )
