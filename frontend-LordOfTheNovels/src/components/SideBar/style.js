@@ -76,9 +76,20 @@ export const UserContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     svg{
       font-size: 1.75rem;
+    }
+   
+    .link{
+      width: 100%;
+      height: 100%;
+
+      img{
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 

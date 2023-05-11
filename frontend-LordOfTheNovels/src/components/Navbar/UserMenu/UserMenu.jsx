@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import { googleLogout } from "@react-oauth/google"
 
 //Components
 import { Switcher } from "../../index";
+import { fetchUser } from "../../../data/index"
 
 import * as Styles from "./style";
-import img from "../../../assets/profile-123456.png";
 
 const UserMenu = () => {
   const [showProfile, setShowProfile] = useState(false)
@@ -16,24 +17,20 @@ const UserMenu = () => {
    
   }
 
-
-  const user = {
-    name: "Caio",
-    image: img,
-    active: true,
-  };
+  const removeToLocalStorage = () => localStorage.clear()
+  const user = fetchUser()
 
   return (
     <Styles.UserContainer
-      active={user.active}  
+      active={user}  
       onClick={handleShowProfile} 
       >
       <div className="iconContainer">
-        {user.active ? <img src={img} alt="UserProfile-Logo" /> : <FaUserAlt />}
+        {user ? <img src={user?.picture} alt="UserProfile-Logo" /> : <FaUserAlt />}
       </div>
 
       <Styles.UserProfile className={`${showProfile ? "showActiveProfile" : ""}`} show={showProfile}>
-        {user.active ? (
+        {user ? (
           <ul className="UserLinks">
             <li>
               <Link className="link" to={"/profile"}>
@@ -45,7 +42,11 @@ const UserMenu = () => {
                 Minha Biblioteca
               </Link>
             </li>
-            <li>
+            <li onClick={() => {
+              googleLogout()
+              removeToLocalStorage()
+              window.location.reload()
+            }}>
               <Link className="link" to={"/"}>
                 Logout
               </Link>
@@ -59,11 +60,6 @@ const UserMenu = () => {
             <li>
               <Link className="link" to={"/login"}>
                 Login
-              </Link>
-            </li>
-            <li>
-              <Link className="link" to={"/register"}>
-                Sing Up
               </Link>
             </li>
             <li>

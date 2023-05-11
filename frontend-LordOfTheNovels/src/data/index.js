@@ -1,6 +1,9 @@
 import img from "../assets/profile-123456.png"
 
-
+const fetchUser = () => {
+  const userInfo = localStorage.getItem('user') !== undefined ? JSON.parse(localStorage.getItem('user')) : localStorage.clear()
+  return userInfo;
+}
 
 
 const novels = [
@@ -369,4 +372,4 @@ const FontSizes = [
   "30"
 ];
 
-export { novels, novelsIndications, FontSizes,categories }
+export { novels, novelsIndications, FontSizes,categories, fetchUser }

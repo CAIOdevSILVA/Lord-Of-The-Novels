@@ -6,6 +6,7 @@ export const UserContainer = styled.div`
   background: #8c52ff;
   border-radius: 3.75rem;
   position: relative;
+  cursor: pointer;
 
   @media (max-width: 1024px) {
     display: none;
@@ -16,6 +17,7 @@ export const UserContainer = styled.div`
     height: 100%;
     position: relative;
     border-radius: 3.75rem;
+    overflow: hidden;
 
     svg {
       position: absolute;
@@ -38,9 +40,8 @@ export const UserProfile = styled.div`
   border-radius: 5px;
   background: #8c52ff;
   width: 15rem;
-  height: ${({ show }) => (show ? "16rem" : "12rem")};
   overflow: hidden;
-  display: ${({ show }) => (show ? "block" : "none")};
+  display: ${({ show }) => (show ? "inline-flex" : "none")};
 
   ul {
     width: 100%;

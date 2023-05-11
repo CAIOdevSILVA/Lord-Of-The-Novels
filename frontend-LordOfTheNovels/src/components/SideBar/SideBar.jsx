@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { googleLogout } from "@react-oauth/google";
 
 //icons
 import { FaUserAlt } from "react-icons/fa";
@@ -11,34 +12,31 @@ import { ImBooks } from "react-icons/im"
 
 import { Switcher } from "../index";
 
-import img from "../../assets/profile-123456.png";
-import * as Styles from "./style";
 
-const user = {
-  name: "Caio Silva",
-  email: "caiossantosp5560@gmail.com",
-  image: img,
-  active: false,
-};
+import * as Styles from "./style";
+import { fetchUser } from "../../data";
+
+const removeToLocalStorage = () => localStorage.clear()
+const user = fetchUser()
 
 const SideBar = () => {
   return (
     <Styles.Container>
       <Styles.UserMenu>
-        {user.active ? (
+        {user ? (
           <div className="Wrapper">
             <ul className="ListMenu">
               <li>
                 <Styles.UserContainer>
                   <div className="ImageContainer">
-                    <Link to={"/profile"}>
-                      <FaUserAlt  color="#8c52ff" />
+                    <Link to={"/profile"} className="link">
+                      {user ? <img src={user?.picture} alt="UserProfile-Logo" /> : <FaUserAlt />}
                     </Link>
                   </div>
                   <div className="UserData">
                     <Link to={"/profile"} style={{ textDecoration: "none" }}>
-                      <p>{user.name}</p>
-                      <p className="smallText">{user.email}</p>
+                      <p>{user?.name}</p>
+                      <p className="smallText">{user?.email}</p>
                     </Link>
                   </div>
                 </Styles.UserContainer>
@@ -73,7 +71,11 @@ const SideBar = () => {
                   Contato
                 </Link>
               </Styles.Item>
-              <Styles.Item>
+              <Styles.Item onClick={() => {
+                 googleLogout()
+                 removeToLocalStorage()
+                 window.location.reload()
+              }}>
                 <Link to={"/"} className="link">
                   <AiOutlineLogin size={24} />
                   Logout
@@ -106,12 +108,6 @@ const SideBar = () => {
                 <Link to={"/login"} className="link">
                   <AiOutlineLogin size={24} />
                   Login
-                </Link>
-              </Styles.Item>
-              <Styles.Item>
-                <Link to={"/register"} className="link">
-                  <MdOutlineAccountCircle size={24} />
-                  Sign Up
                 </Link>
               </Styles.Item>
               <Styles.Item>

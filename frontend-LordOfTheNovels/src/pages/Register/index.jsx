@@ -24,6 +24,7 @@ const Register = () => {
     client.createIfNotExists(user)
       .then(() => {
         navigate("/")
+        window.location.reload()
       })
   };
 
@@ -42,7 +43,10 @@ const Register = () => {
             onSuccess={(response) => { onSubmit(response) }}
             shape="rectangular"
             theme="filled_black"
+            text="continue_with"
           />
+
+          <div className="facebook"></div>
         </div>
       </Styles.Wrapper>
     </Styles.Container>
