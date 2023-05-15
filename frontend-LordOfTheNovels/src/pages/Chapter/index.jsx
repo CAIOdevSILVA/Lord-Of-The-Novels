@@ -12,7 +12,13 @@ import { client } from "../../client";
 
 import * as Styles from "./style";
 
-const OptionsModal = ({ handleShowModal }) => {
+const OptionsModal = ({ handleShowModal, handleChangeFontSize, FontSize, handleChangeFontFamily, FontFamily }) => {
+  const [fontSize, setFontSize] = useState(FontSize)
+  const [fontFamily, setFontFamily] = useState(FontFamily)
+
+  useEffect(() => {
+
+  },[fontSize])
 
   return (
     <>
@@ -26,17 +32,23 @@ const OptionsModal = ({ handleShowModal }) => {
           <div className="options">
             <div className="fontOptions">
               <h5>Fonte</h5>
-              <select id="SelectFont">
-                <option value="Nunito">Nunito</option>
-                <option value="Popins">Poppins</option>
-                <option value="Marriweather">Merriweather</option>
+              <select id="SelectFontFamily" defaultValue={fontFamily} onChange={(e) => {
+                const value = e.target.value
+                handleChangeFontFamily(value)
+              }}>
+                <option value="Nunito Sans, sans-serif">Nunito</option>
+                <option value="Poppins, sans-serif">Poppins</option>
+                <option value="Merriweather, serif">Merriweather</option>
               </select>
             </div>
             <div className="fontSizeOptions">
               <h5>Tamanho</h5>
-              <select id="SelectFont">
+              <select id="SelectFontSize" defaultValue={fontSize} onChange={(e) => {
+                const value = e.target.value
+                handleChangeFontSize(value)
+              }} >
                 {FontSizes.map((font) => (
-                  <option value={font}>{font}</option>
+                  <option value={font +"px"}>{font}</option>
                 ))}
               </select>
             </div>
@@ -53,11 +65,14 @@ const Chapter = () => {
   const [novelInfo, setNovelInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [fontSize, setFontSize] = useState("16px")
+  const [fontFamily, setFontFamily] = useState("Nunito Sans")
 
   const getNovel = async (element) => {
     const data = await client.fetch(
       `*[_type == "novels" && slug.current == "${element}"][0]{
         chapters[]{
+          _id,
           body,
           slug,
           title,
@@ -73,7 +88,8 @@ const Chapter = () => {
           }
         },
         slug,
-        title 
+        title,
+        _id 
       }`
     );
     return data;
@@ -85,7 +101,8 @@ const Chapter = () => {
         <p
           style={{
             marginBottom: "1.5rem",
-            fontSize: "1.1rem",
+            fontSize: fontSize,
+            fontFamily: fontFamily
           }}
           className="NovelColorFont"
         >
@@ -95,15 +112,24 @@ const Chapter = () => {
     },
   };
 
+  const handleChangeFontSize = (value) => {
+    setFontSize(value)
+  }
+  const handleChangeFontFamily = (value) => {
+    setFontFamily(value)
+  }
+
   const chapterBody = novelInfo?.chapters.filter((element) => {
     return element?.slug.current === chapter;
   })[0];
 
-  console.log(chapterBody)
+  console.log(novelInfo)
+
 
   const FindIndex = novelInfo?.chapters.findIndex((element) => {
     return element.title === chapterBody.title
   })
+
 
   const handleShowModal = () => {
     setShowModal(showModal === false ? true : false);
@@ -132,7 +158,9 @@ const Chapter = () => {
     <Styles.Container>
       <Styles.ChapterHeader>
         <div className="headings">
-          <h1>{novelInfo?.title}</h1>
+          <Link className="link" to={`/novels/${novelInfo?.slug.current}`}>
+            <h1>{novelInfo?.title}</h1>
+          </Link>
           <p>{chapterBody?.title}</p>
         </div>
         <div className="NavButtons">
@@ -166,7 +194,10 @@ const Chapter = () => {
           </button>
           <div className="navigationButtons">
           <a href={
-            FindIndex - 1 < 0 ? `/novels/${novel}/${novelInfo?.chapters[0]?.slug.current}` : `/novels/${novel}/${novelInfo?.chapters[FindIndex - 1]?.slug.current}`
+            FindIndex - 1 < 0 ? 
+            `#` 
+            :
+             `/novels/${novel}/${novelInfo?.chapters[FindIndex - 1]?.slug.current}`
           }
           >
             <button className="arrowButton" style={{cursor: FindIndex - 1 < 0 ? "not-allowed" : "pointer", opacity: FindIndex - 1 < 0 ? ".5" : "1"}} >
@@ -174,7 +205,10 @@ const Chapter = () => {
               </button>
            </a>
            <a href={
-            FindIndex + 1 >= novelInfo?.chapters.length ? `/novels/${novel}/${novelInfo?.chapters[novelInfo?.chapters.length - 1]?.slug.current}` : `/novels/${novel}/${novelInfo?.chapters[FindIndex + 1]?.slug.current}`
+            FindIndex + 1 >= novelInfo?.chapters.length ? 
+            `#` 
+            :
+             `/novels/${novel}/${novelInfo?.chapters[FindIndex + 1]?.slug.current}`
            }>
             <button className="arrowButton" style={{cursor: FindIndex + 1 >= novelInfo?.chapters.length ? "not-allowed" : "pointer", opacity: FindIndex + 1 >= novelInfo?.chapters.length ? ".5" : "1"}}>
                 <AiOutlineArrowRight />
@@ -206,9 +240,15 @@ const Chapter = () => {
         </a>
       </Styles.NavDownButtons>
 
-      <Comment comments={chapterBody?.feedback} starRating={starRating}/>
+      <Comment comments={chapterBody?.feedback} starRating={starRating} id={novelInfo?._id} index={FindIndex}/>
 
-      {showModal && <OptionsModal handleShowModal={handleShowModal} />}
+      {showModal && <OptionsModal 
+                      handleChangeFontSize={handleChangeFontSize} 
+                      handleShowModal={handleShowModal} 
+                      FontSize={fontSize} 
+                      handleChangeFontFamily={handleChangeFontFamily}
+                      FontFamily={fontFamily}
+                      />}
     </Styles.Container>
   );
 };

@@ -22,6 +22,18 @@ export const ChapterHeader = styled.section`
   justify-content: space-between;
   align-items: center;
 
+  .headings{
+    .link{
+      text-decoration: none;
+      color: ${props => props.theme.colors.tertiary};
+      
+      h1{
+        &:hover{
+          border-bottom: 1px solid ${props => props.theme.colors.tertiary};
+        }
+      }
+    }
+  }
 
   .NavButtons{
     display: flex;
@@ -175,7 +187,7 @@ export const Modal = styled.div`
         align-items: center;
         gap: 1rem;
 
-        #SelectFont{
+        #SelectFontFamily{
           width: 5rem;
           background-color: #8c52ff;
           outline: none;
@@ -184,6 +196,7 @@ export const Modal = styled.div`
           border-radius: 5px;
           padding: .4rem;
           text-align: center;
+          cursor: pointer;
 
           option{
             background-color: #3e1e68;
@@ -195,7 +208,7 @@ export const Modal = styled.div`
         align-items: center;
         gap: 1rem;
 
-        #SelectFont{
+        #SelectFontSize{
           width: 3rem;
           background-color: #8c52ff;
           outline: none;
@@ -204,6 +217,7 @@ export const Modal = styled.div`
           border-radius: 5px;
           padding: .4rem;
           text-align: center;
+          cursor: pointer;
 
           option{
             background-color: #3e1e68;

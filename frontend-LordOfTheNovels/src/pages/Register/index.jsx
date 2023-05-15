@@ -1,4 +1,6 @@
 import { GoogleLogin } from "@react-oauth/google";
+import { LoginSocialFacebook } from "reactjs-social-login"
+import { FacebookLoginButton } from "react-social-login-buttons"
 import { useNavigate } from "react-router-dom";
 import { client } from "../../client"
 import jwt_decode from "jwt-decode"
@@ -9,7 +11,7 @@ import * as Styles from "./style";
 const Register = () => {
   const navigate = useNavigate()
 
-  const onSubmit = async (data) => {
+  const onGoogleSubmit = async (data) => {
     const userDecode = jwt_decode(data.credential)
 
     const user = {
@@ -19,7 +21,7 @@ const Register = () => {
       _type: "user"
     }
   
-    localStorage.setItem("user", JSON.stringify(userDecode))
+    localStorage.setItem("user", JSON.stringify({ ...user, email: userDecode?.email}))
 
     client.createIfNotExists(user)
       .then(() => {
@@ -27,6 +29,23 @@ const Register = () => {
         window.location.reload()
       })
   };
+
+  const onFacebookSubmit = async ({ data }) => {
+    const user = {
+      name: data?.name,
+      imageUrl: data?.picture?.data.url,
+      _id: data?.id,
+      _type: "user"
+    }
+
+    localStorage.setItem("user", JSON.stringify({ ...user, email: data?.email}))
+
+    client.createIfNotExists(user)
+      .then(() => {
+        navigate("/")
+        window.location.reload()
+      })
+  }
 
   return (
     <Styles.Container>
@@ -40,13 +59,21 @@ const Register = () => {
         </div>
         <div className="Login__buttons">
           <GoogleLogin 
-            onSuccess={(response) => { onSubmit(response) }}
+            onSuccess={(response) => { onGoogleSubmit(response) }}
             shape="rectangular"
             theme="filled_black"
             text="continue_with"
           />
 
-          <div className="facebook"></div>
+          <LoginSocialFacebook
+            appId={import.meta.env.VITE_FACEBOOK_APP_ID}
+            onResolve={(res) => {
+              onFacebookSubmit(res)
+            }}
+            onReject={(error) => {console.log(error)}}
+          >
+            <FacebookLoginButton />
+          </LoginSocialFacebook>
         </div>
       </Styles.Wrapper>
     </Styles.Container>

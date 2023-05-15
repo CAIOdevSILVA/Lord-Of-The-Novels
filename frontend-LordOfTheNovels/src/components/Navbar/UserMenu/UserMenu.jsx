@@ -5,7 +5,7 @@ import { googleLogout } from "@react-oauth/google"
 
 //Components
 import { Switcher } from "../../index";
-import { fetchUser } from "../../../data/index"
+import { fetchUser, img } from "../../../data/index"
 
 import * as Styles from "./style";
 
@@ -26,7 +26,7 @@ const UserMenu = () => {
       onClick={handleShowProfile} 
       >
       <div className="iconContainer">
-        {user ? <img src={user?.picture} alt="UserProfile-Logo" /> : <FaUserAlt />}
+        {user ? <img src={user?.imageUrl} alt="UserProfile-Logo" /> : <FaUserAlt />}
       </div>
 
       <Styles.UserProfile className={`${showProfile ? "showActiveProfile" : ""}`} show={showProfile}>

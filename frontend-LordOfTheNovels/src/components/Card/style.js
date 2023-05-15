@@ -44,6 +44,15 @@ export const NovelInfo = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &:hover{
+      border-bottom: 1px solid ${ props => props.theme.colors.tertiary};
+    }
+
+    .link{
+      text-decoration: none;
+      color: ${props => props.theme.colors.tertiary};
+    }
   }
 
   .novelData {

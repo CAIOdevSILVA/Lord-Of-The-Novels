@@ -45,10 +45,12 @@ const Novels = () => {
   const getNovel = async (element) => {
     const data = await client.fetch(
       `*[_type == "novels" && slug.current == "${element}"][0]{
+        _id,
         about,
         author,
         chapters[],
         feedback[]{
+          _id,
           comment,
           stars,
           _key,
@@ -69,13 +71,14 @@ const Novels = () => {
     return data;
   };
 
+
   const starRating = novelData?.feedback ? novelData?.feedback.map((element) => {
     return element.stars
   }).reduce((star, acc) => {
     return star + acc
   }, 0) / novelData?.feedback.length : 0
 
-  
+ 
   const handleShowChapter = () => {
     setShow(show === false ? true : false);
   };
@@ -92,7 +95,6 @@ const Novels = () => {
     });
   }, [novel]);
 
-  console.log(novelData)
 
   if (loading) return <Loader message="Carregando a Novel..." />;
 
@@ -196,7 +198,7 @@ const Novels = () => {
         )}
       </Styles.ChaptersSection>
 
-      {novelData && <Comment comments={novelData?.feedback} starRating={starRating} />}
+      {novelData && <Comment comments={novelData?.feedback} id={novelData?._id} getNovel={getNovel} starRating={starRating} />}
 
     </Styles.Container>
   );

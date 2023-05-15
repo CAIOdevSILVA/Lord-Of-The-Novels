@@ -372,4 +372,4 @@ const FontSizes = [
   "30"
 ];
 
-export { novels, novelsIndications, FontSizes,categories, fetchUser }
+export { novels, novelsIndications, FontSizes,categories, fetchUser, img }

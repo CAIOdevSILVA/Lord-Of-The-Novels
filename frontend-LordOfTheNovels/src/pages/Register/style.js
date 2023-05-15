@@ -51,11 +51,6 @@ export const Wrapper = styled.div`
     align-items: center;
     gap: 1rem;
 
-    .facebook{
-    width: 15.5rem;
-    height: 2.5rem;
-    background: #8c52ff;
   }
-}
 
 `

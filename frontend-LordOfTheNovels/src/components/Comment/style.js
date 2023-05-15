@@ -100,6 +100,7 @@ export const CommentSection = styled.section`
             width: 3rem;
             height: 3rem;
             object-fit: cover;
+            border-radius: 50px;
           }
           .userName{
             font-size: 1.2rem;

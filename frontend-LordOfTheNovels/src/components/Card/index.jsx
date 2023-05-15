@@ -13,16 +13,18 @@ const Card = ({ novel, vertical }) => {
     return star + acc
   }, 0) / novel?.feedback.length  : 4
 
-  const result = 4.7888
 
-  console.log(novel)
   return (
     <Styles.Container vertical={vertical}>
       <div className="ImageContainer">
         <img src={urlFor(novel?.image)} alt="Novel Image" />
       </div>
       <Styles.NovelInfo>
-        <h3>{novel?.title}</h3>
+        <h3>
+          <Link className="link" to={`/novels/${novel.slug.current}`}>
+            {novel?.title}
+          </Link>
+        </h3>
         {vertical && (
           <Styles.Tags>
             {novel.tags.map((tag) => (
@@ -38,9 +40,19 @@ const Card = ({ novel, vertical }) => {
             {starRating.toFixed(1) }
           </span>
           <span className="ChapterLink">
-            <Link to={`/novels/${novel.slug.current}`} className="link">
-              Cap: {novel.cap}
+          {novel?.chapters ? (
+            <Link to={`/novels/${novel?.slug.current}/${novel?.chapters.slug.current}`} className="link">
+              Cap: { novel?.chapters && novel?.chapters.title.replace(/[^\d]/g, "")} {//Essa função seleciona toas as ocorrencias
+                                                                                      //de caracteres não numericos e os substitui
+                                                                                      //por uma "" deixando apenas o número 
+                                                                                    }
+            </Link>                                         
+          ) : (
+            <Link style={{color:"#f1f5f4", fontSize:".7rem", textDecoration:"none"}} to={`/novels/${novel?.slug.current}`}>
+              Ler
             </Link>
+          ) 
+          }
           </span>
         </div>
       </Styles.NovelInfo>

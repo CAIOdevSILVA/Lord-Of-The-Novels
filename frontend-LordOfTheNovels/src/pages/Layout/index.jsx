@@ -9,7 +9,7 @@ import * as Styles from './style'
 
 
 const Layout = () => {
-
+  
   return (
     <Styles.Container>
       <Navbar/>

@@ -17,6 +17,7 @@ const HomePage = () => {
         feedback[]{
           stars
         },
+        chapters[-1],
         image,
         slug,
         tags[],

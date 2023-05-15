@@ -72,6 +72,11 @@ export const Modal = styled.section`
           .radio {
             display: none;
           }
+
+          .ErrorMessage{
+          color: #e33d33;
+          font-size: .7rem;
+        }
         }
 
         .raiting {
@@ -92,7 +97,6 @@ export const Modal = styled.section`
       .setComment {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
 
         #commentArea {
           width: 100%;
@@ -108,12 +112,22 @@ export const Modal = styled.section`
           &::placeholder {
             font-size: 0.9rem;
           }
+
+          &.error{
+            border: 1px solid #e33d33;
+          }
         }
 
         .buttonContainer {
           width: 100%;
           display: flex;
           justify-content: flex-end;
+          margin-top: 1.5rem;
+        }
+
+        .ErrorMessage{
+          color: #e33d33;
+          font-size: .7rem;
         }
       }
 

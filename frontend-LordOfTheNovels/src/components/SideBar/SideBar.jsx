@@ -4,7 +4,7 @@ import { googleLogout } from "@react-oauth/google";
 //icons
 import { FaUserAlt } from "react-icons/fa";
 import { AiOutlineLogin } from "react-icons/ai";
-import { MdOutlineAccountCircle } from "react-icons/md";
+
 import { HiHome } from "react-icons/hi";
 import { TbBrandSafari } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
@@ -30,7 +30,7 @@ const SideBar = () => {
                 <Styles.UserContainer>
                   <div className="ImageContainer">
                     <Link to={"/profile"} className="link">
-                      {user ? <img src={user?.picture} alt="UserProfile-Logo" /> : <FaUserAlt />}
+                      {user ? <img src={user?.imageUrl} alt="UserProfile-Logo" /> : <FaUserAlt />}
                     </Link>
                   </div>
                   <div className="UserData">
