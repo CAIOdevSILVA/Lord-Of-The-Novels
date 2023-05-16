@@ -11,7 +11,7 @@ import { AiFillStar } from "react-icons/ai";
 import { fetchUser } from "../../data/index"
 import { client } from "../../client"
 
-const Modal = ({handleShowModal, id, index}) => {
+const Modal = ({handleShowModal, id, index, isFeedback}) => {
   const { chapter } = useParams()
   const user = fetchUser()
   const [rating, setRating] = useState(null)
@@ -45,14 +45,11 @@ const Modal = ({handleShowModal, id, index}) => {
   }
 
   const addCommentInChapter = async (data) => {
-    client
+    if(isFeedback){
+      client
       .patch(id)
-      .setIfMissing({ chapters:[
-        {
-          feedback: [-1]
-        }
-      ] })
-      .insert("after", `chapters[${index}].feedback[${-1 ?? 0}]`, [
+      .setIfMissing({ chapters:[] })
+      .insert("after", `chapters[${index}].feedback[${-1}]`, [
         {
           _key: uuidv4,
           comment: data?.comment,
@@ -67,8 +64,26 @@ const Modal = ({handleShowModal, id, index}) => {
       .then(() => {
         alert("Comentário adicionado. Daqui à alguns minutos ele irá aparecer na página! Enquanto isso continue a sua leitura.")
       })  
+    }else{
+      client
+      .patch(id)
+      .set({[`chapters[${index}].feedback`]: [
+        {
+          _key: uuidv4,
+          comment: data?.comment,
+          postedBy: {
+            _type: "postedBy",
+            _ref: user?._id
+          },
+          stars: Number(data?.stars)
+        }
+      ]})
+      .commit()
+    .then(() => {
+      alert("Comentário adicionado. Daqui à alguns minutos ele irá aparecer na página! Enquanto isso continue a sua leitura.")
+    })
+    }
   }
-  console.log(index)
 
   return (
     <Styles.Modal>

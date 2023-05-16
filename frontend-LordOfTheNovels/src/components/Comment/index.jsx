@@ -63,7 +63,7 @@ const Comment = ({ comments, starRating, id, index}) => {
         )}
       </div>
 
-      {showModal && <Modal handleShowModal={handleShowModal} id={id} index={index}/>}
+      {showModal && <Modal handleShowModal={handleShowModal} id={id} index={index} isFeedback={comments && comments.length > 0 ? true : false}/>}
     </Styles.CommentSection>
   );
 };

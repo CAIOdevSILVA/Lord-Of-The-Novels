@@ -123,7 +123,7 @@ const Chapter = () => {
     return element?.slug.current === chapter;
   })[0];
 
-  console.log(novelInfo)
+  console.log(chapterBody)
 
 
   const FindIndex = novelInfo?.chapters.findIndex((element) => {
