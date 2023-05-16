@@ -4,7 +4,7 @@ export const Container = styled.article`
 
  .CardsContainer {
   display: grid;
-  grid-template-columns: repeat(${({vertical}) => vertical ? 1 : 4}, auto);
+  grid-template-columns: repeat(${({vertical}) => vertical ? 1 : 4}, auto); 
   margin-top: 1.25rem;
   gap: 1rem;
  }

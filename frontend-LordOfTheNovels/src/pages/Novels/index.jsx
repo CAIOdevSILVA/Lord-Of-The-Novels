@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { Loader, Button, Comment } from "../../components/index";
-
+import { v4 as uuidv4 } from "uuid"
+import { fetchUser } from "../../data";
 
 import { AiFillStar } from "react-icons/ai";
 import { useParams, Link } from "react-router-dom";
@@ -38,7 +39,8 @@ const Novels = () => {
   const [novelData, setNovelData] = useState(null);
   const [show, setShow] = useState(false);
   const [showAbout, setShowAbout] = useState(false)
-  const user = true
+  const [follow, setFollow] = useState(false)
+  const user = fetchUser()
   
   const [loading, setLoading] = useState(false);
 
@@ -50,7 +52,6 @@ const Novels = () => {
         author,
         chapters[],
         feedback[]{
-          _id,
           comment,
           stars,
           _key,
@@ -60,6 +61,13 @@ const Novels = () => {
             email,
             imageUrl       
           },
+        },
+        save[]{
+          userId,
+          postedBy->{
+            _id,
+            name,
+          }
         },
         image,
         slug,
@@ -78,7 +86,8 @@ const Novels = () => {
     return star + acc
   }, 0) / novelData?.feedback.length : 0
 
- 
+  const isUser = novelData?.save && novelData?.save.filter((element) =>  element?.userId === user?._id)
+
   const handleShowChapter = () => {
     setShow(show === false ? true : false);
   };
@@ -86,9 +95,34 @@ const Novels = () => {
   function truncate(str, n) {
     return str?.length > n ? str.substring(0, n - 1) + "..." : str
   }
+
+
+  const saveNovel = async () => {
+    client
+    .patch(novelData?._id)
+    .setIfMissing({ save:[] })
+    .insert("after", "save[-1]", [
+      {
+        _key: uuidv4,
+        userId: user?._id,
+        postedBy: {
+          _type: "postedBy",
+          _ref: user?._id
+        },
+      }
+    ])
+    .commit()
+    .then(() => {
+      alert("Você esta seguindo a obra agora. Va pra sua Biblioteca conferir!")
+      setFollow(true)
+    })
+
+  }
   
   useEffect(() => {
     setLoading(true);
+    setFollow(false);
+
     getNovel(novel).then((response) => {
       setNovelData(response);
       setLoading(false);
@@ -116,7 +150,7 @@ const Novels = () => {
           <div className="novelRating">
             <div className="followers">
               <h3>Seguidores: </h3>
-              <span>{novelData?.save ? novelData?.save : 0}</span>
+              <span>{novelData?.save ? novelData?.save.length : 0}</span>
             </div>
             <div className="rating">
               <span>
@@ -166,7 +200,11 @@ const Novels = () => {
                 !user && "/login"
               }
             >
-                <Button outline={true}>Seguir</Button>
+                <Button outline={true}>
+                  <div onClick={saveNovel}>
+                    {isUser && isUser.length > 0 || follow === true  ? "Seguindo" : "Seguir"}
+                  </div>
+                </Button>
             </Link>
           </div>
         </Styles.NovelInfo>

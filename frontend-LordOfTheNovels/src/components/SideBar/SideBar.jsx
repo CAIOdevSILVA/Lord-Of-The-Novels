@@ -48,7 +48,7 @@ const SideBar = () => {
                 </Link>
               </Styles.Item>
               <Styles.Item>
-                <Link to={"/register"} className="link">
+                <Link to={"/library"} className="link">
                   <ImBooks size={24} />
                     Minha Biblioteca
                 </Link>
