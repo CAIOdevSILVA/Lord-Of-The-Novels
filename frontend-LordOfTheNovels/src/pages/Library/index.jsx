@@ -30,7 +30,6 @@ const Library = () => {
     })
   },[])
 
-  console.log(novelInfo)
   if(!novelInfo) return <Loader message={"Estamos carregando as Novels!"}/>
 
   return (

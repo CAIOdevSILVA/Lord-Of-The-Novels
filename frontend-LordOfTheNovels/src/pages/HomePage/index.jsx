@@ -21,7 +21,8 @@ const HomePage = () => {
         image,
         slug,
         tags[],
-        title 
+        title,
+        indications 
       }`
     );
     return novels;
@@ -39,13 +40,20 @@ const HomePage = () => {
 
   if(loading) return <Loader message="Estamos Carregando as Melhores Novels para Você!"/>
   
+  const Indications = novelsData.filter((novel) => novel?.indications === true)
+  const latestChapters = novelsData.filter((novel) => novel?.chapters)
+                                   .sort((a, b) => new Date(b?.chapters?.publishedAt) - new Date(a?.chapters?.publishedAt))   
+                                   .slice(0, 12)
+
+  const asideNovels = Indications.slice(0, 8)
+  
   return (
     <Styles.Container active={true}>
       <Styles.CardsContainer>
-        <Cards title={"Últimos Lançamentos"} novels={novelsData}/>
-        <Cards title={"o Lord Indica"} novels={novelsData}/>
+        <Cards title={"Últimos Lançamentos"} novels={latestChapters}/>
+        <Cards title={"o Lord Indica"} novels={Indications}/>
       </Styles.CardsContainer>
-      <Aside novels={novelsData}/>
+      <Aside novels={asideNovels}/>
     </Styles.Container>
   )
 }

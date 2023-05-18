@@ -65,7 +65,7 @@ const Chapter = () => {
   const [novelInfo, setNovelInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [fontSize, setFontSize] = useState("16px")
+  const [fontSize, setFontSize] = useState( "16px")
   const [fontFamily, setFontFamily] = useState("Nunito Sans")
 
   const getNovel = async (element) => {
