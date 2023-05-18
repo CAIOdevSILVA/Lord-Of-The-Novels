@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { client } from "../../client";
 import { fetchUser } from "../../data";
-import { novels } from "../../data";
 
 import * as Styles from "./style";
 
