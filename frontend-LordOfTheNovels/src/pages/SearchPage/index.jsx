@@ -22,7 +22,6 @@ const SearchPage = () => {
         stars
       },
       chapters[-1],
-      tags[]
     }`)
 
     return data;

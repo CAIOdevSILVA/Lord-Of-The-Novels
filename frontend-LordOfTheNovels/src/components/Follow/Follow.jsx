@@ -33,11 +33,17 @@ const Follow = () => {
       <Styles.Title>{user ? "Você Segue" : "Crie uma Conta"}</Styles.Title>
       {user ? (
         <div className="follow">
-        {userFollow && userFollow.map((novel) => (
-          <Link key={novel?.title} className="link" to={`/novels/${novel?.slug.current}`}>
-            {novel.title}
-          </Link>
-        ))}
+        {userFollow && userFollow.length > 0 ? (
+          <>
+            {userFollow && userFollow.map((novel) => (
+            <Link key={novel?.title} className="link" to={`/novels/${novel?.slug.current}`}>
+              {novel.title}
+            </Link>
+          ))}
+          </>
+        ) : (
+          <h5>Você não segue nenhuma obra ainda.</h5>
+        )}
       </div>
       ) : (
         <div className="NoFollow">

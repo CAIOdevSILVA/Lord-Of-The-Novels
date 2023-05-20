@@ -1,17 +1,19 @@
-import { Link } from  "react-router-dom"
+import { Link, useParams } from  "react-router-dom"
 
 import { categories } from "../../data"
 
 import * as Styles from "./style"
 
-const Categories = () => {
+const Categories = ({ size, columns }) => {
+  const { category } = useParams()
+
   return (
-    <Styles.Container>
+    <Styles.Container size={size} columns={columns}>
       <Styles.Title>Categorias</Styles.Title>
       <div className="categories">
-        {categories.map((category) => (
-          <Link key={category} className="link" to={`/browse/${category}`}>
-            {category}
+        {categories.map((categoryName) => (
+          <Link key={categoryName} className={`link ${category === categoryName && 'active'}`} to={`/browse/${categoryName}`}>
+            {categoryName}
           </Link>
         ))}
       </div>

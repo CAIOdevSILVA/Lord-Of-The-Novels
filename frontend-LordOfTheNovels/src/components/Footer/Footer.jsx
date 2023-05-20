@@ -7,7 +7,8 @@ import img from '../../assets/Logo-Dark__1.png'
 
 import * as Styles from "./style"
 
-const Footer = () => {
+const Footer = ({social}) => {
+
   return (
     <Styles.Container>
       <div className='content'>
@@ -17,16 +18,16 @@ const Footer = () => {
           </div>
           <ul className='socialMedia'>
             <li className='item'>
-              <Link className='link' to={"https://instagram.com"} target={"_blank"} ><AiOutlineInstagram size={24}/></Link>
+              <Link className='link' to={`${social?.instagram}`} target={"_blank"} ><AiOutlineInstagram size={24}/></Link>
             </li>
             <li>
-              <Link className='link' to={"https://faecbook.com"} target={"_blank"}><AiOutlineFacebook size={24}/></Link>
+              <Link className='link' to={`${social?.facebook}`} target={"_blank"}><AiOutlineFacebook size={24}/></Link>
             </li>
             <li>
-              <Link className='link' to={"https://discord.com"} target={"_blank"}><RiDiscordLine size={24}/></Link>
+              <Link className='link' to={`${social?.discord}`} target={"_blank"}><RiDiscordLine size={24}/></Link>
             </li>
             <li>
-              <Link className='link' to={"https://tiktok.com"} target={"_blank"}><FaTiktok size={24}/></Link>
+              <Link className='link' to={`${social?.tiktok}`} target={"_blank"}><FaTiktok size={24}/></Link>
             </li>
           </ul>
         </div>
@@ -34,10 +35,10 @@ const Footer = () => {
           <h2>Recursos</h2>
           <ul className='resourceContent'>
             <li>
-              <Link className='link' to={"/termos"}>Termos de uso</Link>
+              <Link className='link' to={"/resource/termosDeUso"}>Termos de uso</Link>
             </li>
             <li>
-              <Link className='link' to={"/politica"}>Política de Privacidade</Link>
+              <Link className='link' to={"/resource/PoliticaDePrivacidade"}>Política de Privacidade</Link>
             </li>
           </ul>
         </div>

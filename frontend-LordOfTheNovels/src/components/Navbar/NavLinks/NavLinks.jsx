@@ -16,7 +16,7 @@ const Links = [
   },
   {
     name: "Browse",
-    link: "/browse",
+    link: "/browse/Ação",
     icon: TbBrandSafari
   },
   {

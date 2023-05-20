@@ -1,7 +1,19 @@
+import { useState, useEffect } from 'react'
 import { Routes, Route } from "react-router-dom"
+import { client } from "../../client"
 
 //Components
-import { Chapter, Novels, HomePage, Library, SearchPage } from "../index"
+import { 
+  Chapter, 
+  Novels, 
+  HomePage, 
+  Library, 
+  SearchPage, 
+  Browse, 
+  NotFound, 
+  Resource
+} from "../index"
+
 import { Navbar, Footer }  from "../../components/index"
 
 import * as Styles from './style'
@@ -9,6 +21,26 @@ import * as Styles from './style'
 
 
 const Layout = () => {
+  const [social, setSocial] = useState(null)
+
+  const getSocialMedias = async() => {
+    const data = await client.fetch(`*[_type == 'siteConfig'][0]{
+      instagram,
+      facebook,
+      discord,
+      tiktok
+    }`)
+
+    return data;
+  }
+
+  useEffect(() => {
+    getSocialMedias()
+      .then((response) => {
+        setSocial(response)
+      })
+  }, [])
+
   
   return (
     <Styles.Container>
@@ -20,9 +52,12 @@ const Layout = () => {
             <Route path='/novels/:novel/:chapter' element={<Chapter/>} />
             <Route path='/library' element={<Library/>} />
             <Route path='/search/:search' element={<SearchPage/>} />
+            <Route path='/browse/:category' element={<Browse />} />
+            <Route path='/resource/:resource' element={<Resource />} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
       </main>
-      <Footer/>
+      <Footer social={social}/>
     </Styles.Container>
   )
 }

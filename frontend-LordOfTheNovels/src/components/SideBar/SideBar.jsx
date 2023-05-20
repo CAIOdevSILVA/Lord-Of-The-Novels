@@ -60,7 +60,7 @@ const SideBar = () => {
                 </Link>
               </Styles.Item>
               <Styles.Item>
-                <Link to={"/browse"} className="link">
+                <Link to={"/browse/Ação"} className="link">
                   <TbBrandSafari size={24} />
                   Browse
                 </Link>
@@ -117,7 +117,7 @@ const SideBar = () => {
                 </Link>
               </Styles.Item>
               <Styles.Item>
-                <Link to={"/browse"} className="link">
+                <Link to={"/browse/Ação"} className="link">
                   <TbBrandSafari size={24} />
                   Browse
                 </Link>

@@ -11,7 +11,7 @@ const Aside = ({ novels }) => {
         <Cards title={"O Lord Indica"} novels={novels} vertical={true} />
       </Styles.Indications>
       <Styles.Categories>
-        <Categories/>
+        <Categories size={"auto"} columns={3}/>
       </Styles.Categories>
       <Styles.Follow>
         <Follow />
