@@ -8,7 +8,7 @@ const Aside = ({ novels }) => {
   return (
     <Styles.Container>
       <Styles.Indications>
-        <Cards title={"O Lord Indica"} novels={novels} vertical={true} />
+        <Cards title={"O Lord Indica"} novels={novels} horizontal={true} />
       </Styles.Indications>
       <Styles.Categories>
         <Categories size={"auto"} columns={3}/>

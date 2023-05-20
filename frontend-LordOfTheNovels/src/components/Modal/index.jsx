@@ -16,15 +16,17 @@ const Modal = ({handleShowModal, id, index, isFeedback}) => {
   const user = fetchUser()
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const {
     register, 
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm()
 
   const addCommentInNovel = async (data) => {
-    client
+    setLoading(true)
+    await client
       .patch(id)
       .setIfMissing({ feedback: [] })
       .insert("after", "feedback[-1]", [
@@ -41,12 +43,15 @@ const Modal = ({handleShowModal, id, index, isFeedback}) => {
       .commit()
       .then(() => {
         alert("Comentário adicionado. Daqui à alguns minutos ele irá aparecer na página! Enquanto isso continue a sua leitura.")
+        setLoading(false)
+        handleShowModal()
       })  
   }
 
   const addCommentInChapter = async (data) => {
+    setLoading(true)
     if(isFeedback){
-      client
+      await client
       .patch(id)
       .setIfMissing({ chapters:[] })
       .insert("after", `chapters[${index}].feedback[${-1}]`, [
@@ -63,9 +68,11 @@ const Modal = ({handleShowModal, id, index, isFeedback}) => {
       .commit()
       .then(() => {
         alert("Comentário adicionado. Daqui à alguns minutos ele irá aparecer na página! Enquanto isso continue a sua leitura.")
+        setLoading(false)
+        handleShowModal()
       })  
     }else{
-      client
+      await client
       .patch(id)
       .set({[`chapters[${index}].feedback`]: [
         {
@@ -81,6 +88,8 @@ const Modal = ({handleShowModal, id, index, isFeedback}) => {
       .commit()
     .then(() => {
       alert("Comentário adicionado. Daqui à alguns minutos ele irá aparecer na página! Enquanto isso continue a sua leitura.")
+      setLoading(false)
+      handleShowModal()
     })
     }
   }
@@ -141,13 +150,13 @@ const Modal = ({handleShowModal, id, index, isFeedback}) => {
                   <div onClick={() => {
                     handleSubmit(addCommentInChapter)()
                   }}>
-                    Adicionar
+                    {loading ? "Comentando..." : "Comentar"}
                   </div>
                 </>) : (
                   <div onClick={() => {
                     handleSubmit(addCommentInNovel)()
                   }}>
-                    Adicionar
+                    {loading ? "Comentando..." : "Comentar"}
                   </div>
                 )}
               </Button>

@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: ${({ vertical }) => (vertical ? "100%" : "10rem")};
+  width: ${({ horizontal }) => (horizontal ? "100%" : "10rem")};
   background: ${props => props.theme.colors.CardColor};
   border-radius: 0.3125rem;
   overflow: hidden;
   border-bottom: 2px solid #8c52ff;
-  padding: ${({vertical}) => vertical ? ".5rem" : "0"};
-  display: ${({vertical}) => vertical ? "inline-flex" : "inline-block"};
-  gap: ${({vertical}) => vertical && ".5rem"};
-  align-items: ${({vertical}) => vertical && "center"};
+  padding: ${({horizontal}) => horizontal ? ".5rem" : "0"};
+  display: ${({horizontal}) => horizontal ? "inline-flex" : "inline-block"};
+  gap: ${({horizontal}) => horizontal && ".5rem"};
+  align-items: ${({horizontal}) => horizontal && "center"};
 
   .ImageContainer {
-    width: ${({vertical}) => vertical ? "3rem" : "100%"};
-    height: ${({vertical}) => vertical ? " 80%" : "75%"};
+    width: ${({horizontal}) => horizontal ? "3rem" : "100%"};
+    height: ${({horizontal}) => horizontal ? " 80%" : "75%"};
 
     img {
       width: 100%;
@@ -23,11 +23,11 @@ export const Container = styled.div`
   }
 
   @media (max-width: 768px){
-    width: ${({ vertical }) => (vertical ? "100%" : "8.5rem")};
+    width: ${({ horizontal }) => (horizontal ? "100%" : "8.5rem")};
   }
 
   @media (min-width: 768px) and (max-width: 1024px){
-    width: ${({ vertical }) => (vertical ? "100%" : "8.5rem")};
+    width: ${({ horizontal }) => (horizontal ? "100%" : "8.5rem")};
   }
 `;
 
@@ -37,10 +37,10 @@ export const NovelInfo = styled.div`
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.3rem;
-  width: ${({vertical}) => vertical ? "80%" : "100%"};
+  width: ${({horizontal}) => horizontal ? "80%" : "100%"};
 
   h3 {
-    font-size: ${({vertical}) => vertical ? "1.1rem" : ".9375rem"};
+    font-size: ${({horizontal}) => horizontal ? "1.1rem" : ".9375rem"};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -85,7 +85,7 @@ export const NovelInfo = styled.div`
 
   @media (max-width: 768px) {
     h3{
-      font-size: ${({vertical}) => vertical ? "1.1rem" : ".8rem"};
+      font-size: ${({horizontal}) => horizontal ? "1.1rem" : ".8rem"};
     }
 
     .novelData{

@@ -8,6 +8,7 @@ import SearchPage from "./SearchPage"
 import Browse from "./Browse"
 import NotFound from "./NotFound"
 import Resource from "./Resource"
+import Contact from "./Contact"
 
 export { 
   Layout, 
@@ -19,5 +20,6 @@ export {
   SearchPage, 
   Browse, 
   NotFound,
-  Resource
+  Resource,
+  Contact
  }

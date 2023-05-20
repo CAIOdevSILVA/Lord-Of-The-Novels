@@ -21,7 +21,7 @@ const Links = [
   },
   {
     name: "Contato",
-    link: "/contato",
+    link: "/contact",
     icon: MdEmail
   }
 ];

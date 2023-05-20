@@ -5,7 +5,7 @@ import * as Styles from "./style";
 
 import { urlFor } from "../../client";
 
-const Card = ({ novel, vertical }) => {
+const Card = ({ novel, horizontal }) => {
 
   const starRating = novel?.feedback ? novel?.feedback.map((element) => {
     return element.stars
@@ -15,7 +15,7 @@ const Card = ({ novel, vertical }) => {
 
 
   return (
-    <Styles.Container vertical={vertical}>
+    <Styles.Container horizontal={horizontal}>
       <div className="ImageContainer">
         <img src={urlFor(novel?.image)} alt="Novel Image" />
       </div>
@@ -25,7 +25,7 @@ const Card = ({ novel, vertical }) => {
             {novel?.title}
           </Link>
         </h3>
-        {vertical && (
+        {horizontal && (
           <Styles.Tags>
             {novel.tags.map((tag) => (
               <span className="tag" key={tag}>

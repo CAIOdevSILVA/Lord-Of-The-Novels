@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import { client } from "../../client"
 
 //Components
@@ -11,7 +11,8 @@ import {
   SearchPage, 
   Browse, 
   NotFound, 
-  Resource
+  Resource,
+  Contact
 } from "../index"
 
 import { Navbar, Footer }  from "../../components/index"
@@ -21,6 +22,7 @@ import * as Styles from './style'
 
 
 const Layout = () => {
+  const { pathname } = useLocation()
   const [social, setSocial] = useState(null)
 
   const getSocialMedias = async() => {
@@ -41,6 +43,9 @@ const Layout = () => {
       })
   }, [])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   
   return (
     <Styles.Container>
@@ -53,7 +58,8 @@ const Layout = () => {
             <Route path='/library' element={<Library/>} />
             <Route path='/search/:search' element={<SearchPage/>} />
             <Route path='/browse/:category' element={<Browse />} />
-            <Route path='/resource/:resource' element={<Resource />} />
+            <Route path='/resource/:resource' element={<Resource />}/>
+            <Route path='/contact' element={<Contact/>}/>
             <Route path='*' element={<NotFound />} />
         </Routes>
       </main>

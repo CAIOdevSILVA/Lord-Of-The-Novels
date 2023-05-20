@@ -34,7 +34,7 @@ const Library = () => {
 
   return (
     <Styles.Container>
-        <Cards title={"Sua Biblioteca"} vertical={true} novels={novelInfo}/>
+        <Cards title={"Sua Biblioteca"} horizontal={true} novels={novelInfo}/>
     </Styles.Container>
   )
 }

@@ -51,7 +51,7 @@ const HomePage = () => {
     <Styles.Container active={true}>
       <Styles.CardsContainer>
         <Cards title={"Últimos Lançamentos"} novels={latestChapters}/>
-        <Cards title={"o Lord Indica"} novels={Indications}/>
+        <Cards title={"O Lord Indica"} novels={Indications}/>
       </Styles.CardsContainer>
       <Aside novels={asideNovels}/>
     </Styles.Container>
